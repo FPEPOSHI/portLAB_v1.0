@@ -36,8 +36,6 @@ class LoginController extends Controller
         {
             Redirect::to('login')->send();
         }else{
-            Session::start();
-            Session::set('test',1);
             Utils::setUser($res[0]->user_id,$res[0]->role);
             Redirect::to('home')->send();
         }

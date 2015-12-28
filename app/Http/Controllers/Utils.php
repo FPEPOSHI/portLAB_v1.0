@@ -20,7 +20,7 @@ class Utils
     public static function isLogged()
     {
          
-        if(!session()->has('user_id')){
+        if(!Session::has('user_id')){
             Redirect::to('login')->send();
         }
     }
@@ -28,21 +28,21 @@ class Utils
     public static function logOut()
     {
 
-        session()->forget("user_id");
-        session()->forget("role");
-        session()->flush();
+        Session::forget("user_id");
+        Session::forget("role");
+        Session::flush();
         Redirect::to('login')->send();
     }
 
     public static function getUserID()
     {
-        return session()->get('user_id', '4');
+        return Session::get('user_id');
     }
 
     public static function setUser($user, $role)
     {
-        session(['user_id' => $user]);
-        session(['role' => $role]);
+        Session::set('user_id',$user);
+        Session::set('role',$role);
     }
 
 }

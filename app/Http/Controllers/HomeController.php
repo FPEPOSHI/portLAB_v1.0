@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-//        Utils::isLogged();
+        Utils::isLogged();
         $id = Utils::getUserID();
         $user = User::getUser($id);
         $user_number = User::getUserNamber();

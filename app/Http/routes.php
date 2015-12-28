@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
+Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
+Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
+Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -25,12 +31,9 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
-Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
-Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
-Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
-Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
-
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
+    Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
+    Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
+    Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 });
