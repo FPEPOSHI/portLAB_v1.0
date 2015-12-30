@@ -16,7 +16,7 @@ class Premium extends Migration
             $table->increments('id');
             $table->dateTime('start_date',20);
             $table->dateTime('end_date',20);
-            $table->integer('user_id')->unsigned()->unique();
+            $table->integer('user_id')->unsigned();
             $table->engine = 'InnoDB';
         });
 

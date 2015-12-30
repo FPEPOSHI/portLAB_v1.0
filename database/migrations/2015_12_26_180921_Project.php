@@ -21,9 +21,9 @@ class Project extends Migration
             $table->integer('views');
             $table->integer('like');
             $table->integer('downloads');
-            $table->integer('user_id')->unsigned()->unique();
-            $table->integer('category_id')->unsigned()->unique();
-            $table->integer('format_id')->unsigned()->unique();
+            $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->integer('format_id')->unsigned();
             $table->engine = 'InnoDB';
         });
 
