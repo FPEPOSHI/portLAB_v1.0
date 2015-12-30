@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
 use View;
-
+use Redirect;
 use Illuminate\Support\Facades\Input;
 class HomeController extends Controller
 {
