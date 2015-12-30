@@ -19,53 +19,55 @@
             <!-- Modal Body -->
             <div class="modal-body">
 
-                <form role="form" class="form-horizontal">
-                    <div class="form-group">
+                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
+
+                <div class="form-group">
                         <label for="exampleTitle" class="col-sm-2 control-label">Title</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               id="exampleTitle" placeholder="Title"/>
+                               name="title" placeholder="Title"/>
                     </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleDescription" class="col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               id="exampleDescription" placeholder="Description"/>
+                               name="description" placeholder="Description"/>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleDescription" class="col-sm-2 control-label">Project</label>
                         <div class="col-sm-10">
                         <input type="file" class="form-control"
-                               id="exampleDescription" placeholder="Description"/>
+                               name="projectfile" placeholder="Description"/>
                     </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label"
                                for="Category" >Category</label>
                         <div class="col-sm-10">
-                            <select name="Category" class="form-control">
-                                <option value="1">Programming</option>
-                                <option value="2">Economy</option>
-                                <option value="3">Social Science</option>
+                            <select name="category" class="form-control">
+                                @foreach($category as $cat)
+                                <option value="{!! $cat->category_id !!}">{!! $cat->name !!}</option>
+                                @endforeach
+
                             </select>
                         </div>
                     </div>
+                <div class="modal-footer">
 
+                    <button type="submit" id="send" class="btn btn-primary" >
+                        Send
+                    </button>
+                </div>
 
-                </form>
+                {!! Form::close() !!}
 
 
             </div>
 
             <!-- Modal Footer -->
-            <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary">
-                    Upload
-                </button>
-            </div>
         </div>
     </div>
 </div>

@@ -21,6 +21,8 @@ Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
 Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
 Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
+Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -36,4 +38,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
     Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
+    Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
+
 });
