@@ -1,13 +1,13 @@
 
         <ul class="users-list clearfix">
-            @for($i=0;$i<13;$i++)
+            @foreach($projects as $pro)
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box custom-bg-projects">
+                    <div class="small-box custom-bg-projects" data-id="{!! $pro->project_id !!}">
                         <div class="inner">
-                            <h3>Emri i projektit</h3>
-                            <p>Kategoria e projektit</p>
-                            <p>Pronari i projektit</p>
+                            <h3>{!! $pro->p_name !!}</h3>
+                            <p>{!! $pro->c_name !!}</p>
+                            <p>{!! $pro->u_name !!}</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-files-o"></i>
@@ -15,11 +15,11 @@
                         <div class="small-box-footer">
                             <div class="row">
                             <div class="col-sm-6">
-                                <p>Downloads</p>
+                                <p>{!! $pro->downloads !!}</p>
                                 <i class="fa fa-download"></i>
                             </div>
                             <div class="col-sm-6">
-                                <p>Like</p>
+                                <p>{!! $pro->like !!}</p>
                                 <i class="fa fa-thumbs-o-up"></i>
                             </div>
                             </div>
@@ -28,7 +28,7 @@
                 </div>
                 <!-- /.widget-user -->
 
-                @endfor
+                @endforeach
         </ul>
         <!-- /.users-list -->
     <!-- /.box-body -->

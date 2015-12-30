@@ -13,7 +13,7 @@
                             <span class="info-box-icon"><i class="fa fa-user"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Members</span>
-                                <span class="info-box-number">{!! $total_users !!}</span>
+                                <span class="info-box-number">{!! $total_users or "10"!!}</span>
                                 <!-- The progress section is optional -->
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>

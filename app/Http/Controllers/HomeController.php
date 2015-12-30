@@ -16,10 +16,12 @@ class HomeController extends Controller
         Utils::isLogged();
         $id = Utils::getUserID();
         $user = User::getUser($id);
-        $user_number = User::getUserNamber();
+        $user_number = User::getUserNumber();
+        $projects = Projects::getAllProjects();
         return View::make('home')
             ->with('details',$user)
             ->with('total_users',$user_number)
+            ->with('projects', $projects)
             ;
     }
     public function logout()

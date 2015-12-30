@@ -16,9 +16,11 @@ class User
         return DB::select('select * from User where user_id=?', array($id));
     }
 
-    public static function getUserNamber()
+    public static function getUserNumber()
     {
-        return DB::select('select count(user_id) as nr from User')[0]->nr;
+        $res = DB::select('select count(user_id) as nr from User');
+
+        return $res[0]->nr;
     }
 
 }
