@@ -15,9 +15,9 @@ class Request extends Migration
         Schema::create('Request', function (Blueprint $table) {
             $table->increments('request_id');
             $table->integer('status');
-            $table->integer('project_id')->unsigned()->unique();
-            $table->integer('sender_id')->unsigned()->unique();
-            $table->integer('reciever_id')->unsigned()->unique();
+            $table->integer('project_id')->unsigned();
+            $table->integer('sender_id')->unsigned();
+            $table->integer('reciever_id')->unsigned();
             $table->engine = 'InnoDB';
         });
 

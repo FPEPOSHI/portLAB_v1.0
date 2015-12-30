@@ -14,8 +14,8 @@ class Like extends Migration
     {
         Schema::create('Like', function (Blueprint $table) {
             $table->increments('like_id');
-            $table->integer('project_id')->unsigned()->unique();
-            $table->integer('user_id')->unsigned()->unique();
+            $table->integer('project_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->engine = 'InnoDB';
         });
 
