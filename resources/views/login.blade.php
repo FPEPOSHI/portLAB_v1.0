@@ -41,12 +41,12 @@
 
                         <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="login_usr" value="" placeholder="email ose emri perdoruesit">
+                                        <input id="login-username"  required="required" type="text" class="form-control" name="login_usr" value="" placeholder="email ose emri perdoruesit">
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="login_pass" placeholder="fjalekalimi">
+                                        <input id="login-password"   required="required" type="password" class="form-control" name="login_pass" placeholder="fjalekalimi">
                                     </div>
                             <!-- <div class="input-group">
                                       <div class="checkbox">
@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                            Nuk keni nje llogari? 
+                                            Nuk keni nje llogari? {!! $test or "" !!}
                                         <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                                             Regjistrohu ketu
                                         </a>
@@ -86,7 +86,7 @@
         <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <div class="panel-title">Regjistrohu</div>
+                            <div class="panel-title">Regjistrohu </div>
                             <div style="float:right; font-size: 85%; position: relative; top:-10px">
                                 <span style="margin-right:8px;">Keni nje llogari?</span> 
                                 <a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Hyr</a></div>
@@ -101,31 +101,31 @@
                                 <div class="form-group">
                                     <label for="register_name" class="col-md-3 control-label">Emri</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="register_name" placeholder="emri juaj">
+                                        <input type="text"  required="required" class="form-control" name="register_name" placeholder="emri juaj">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="register_email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="register_email" placeholder="adresa e email">
+                                        <input type="email"  required="required" class="form-control" name="register_email" placeholder="adresa e email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="register_photo" class="col-md-3 control-label">Foto</label>
                                     <div class="col-md-9">
-                                        <input type="file" class="form-control" name="register_photo" placeholder="foto">
+                                        <input type="file"  required="required" class="form-control" name="register_photo" placeholder="foto">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="register_usr" class="col-md-3 control-label">Perdorues</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="register_usr" placeholder=" emri i perdoruesit">
+                                        <input type="text" class="form-control" name="register_usr"  required="required" placeholder=" emri i perdoruesit">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="register_pass" class="col-md-3 control-label">Fjalekalimi</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="register_pass" placeholder="fjalekalimi">
+                                        <input type="password" class="form-control" name="register_pass" required="required" placeholder="fjalekalimi">
                                     </div>
                                 </div>
                                     

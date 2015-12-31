@@ -28,4 +28,9 @@ class Projects
                      ,downloads,user_id,category_id,format_id) values( ?, ?, ?, ?, ?, ?, ?, ?, ?)",
            array($title,$des,$path,$c_date,$views,$downloads,$userId,$cat,$format));
    }
+
+    public static function countLikes()
+    {
+        return DB::select("select count(like_id) as nr from like")[0]->nr;
+    }
 }
