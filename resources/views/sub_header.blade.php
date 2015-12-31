@@ -5,7 +5,7 @@
     <div class="col-md-9">
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Widgets</li>
+            <li class="active">Projects</li>
         </ol>
     </div>
     <div class="col-md-3">

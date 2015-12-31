@@ -19,7 +19,7 @@
                                 <i class="fa fa-download"></i>
                             </div>
                             <div class="col-sm-6">
-                                <p>{!! $pro->like !!}</p>
+                                <p>{!! $pro->likes !!}</p>
                                 <i class="fa fa-thumbs-o-up"></i>
                             </div>
                             </div>

@@ -18,13 +18,21 @@ class HomeController extends Controller
         $id = Utils::getUserID();
         $user = User::getUser($id);
         $user_number = User::getUserNumber();
+        $like_number = Projects::countLikes();
+        $download_number = Projects::countDownloads();
+        $projects_number = Projects::countProjects();
         $cat = Projects::getAllCategory();
         $projects = Projects::getAllProjects();
+        $latest_projects = Projects::getLatestProjects();
         return View::make('home')
             ->with('details',$user)
             ->with('total_users',$user_number)
             ->with('projects', $projects)
             ->with("category", $cat)
+            ->with("latest_pro", $latest_projects)
+            ->with("total_likes", $like_number)
+            ->with("total_downloads", $download_number)
+            ->with("total_projects", $projects_number)
             ;
     }
 
@@ -32,7 +40,7 @@ class HomeController extends Controller
         $t = Input::get("title");
         $d = Input::get("description");
         $c = Input::get("category");
-        $format = 1;
+        $format = Projects::getFirstFormat();
         $path = "hhjjj";
         $like = 0;
         $download = 0;

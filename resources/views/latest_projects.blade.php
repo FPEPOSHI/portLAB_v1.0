@@ -10,20 +10,20 @@
     <!-- /.box-header -->
     <div class="box-body">
         <ul class="products-list product-list-in-box">
-            @for($i =0 ; $i<6; $i++)
+            @foreach($latest_pro as $pro)
                 <li class="item">
                     <div class="product-img">
                         <img src="{!! asset('uploads/no_img.jpg') !!}" alt="Product Image">
                     </div>
                     <div class="product-info">
-                        <a href="javascript:;" class="product-title">Project 1
-                            <span class="label label-warning pull-right">Kategoria test</span></a>
+                        <a href="javascript:;" class="product-title">{!! $pro->p_name !!}
+                            <span class="label label-warning pull-right">{!! $pro->c_name !!}</span></a>
                             <span class="product-description">
-                              Project fksdjfs fksjdfsd fskjfndsfs fsdkjfsd
+                              {!! $pro->p_desc !!}
                             </span>
                     </div>
                 </li>
-             @endfor
+             @endforeach
             </ul>
         </div>
     </div>

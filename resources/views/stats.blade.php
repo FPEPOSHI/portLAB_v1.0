@@ -27,7 +27,7 @@
             <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
                 <div class="info-box-content">
                 <span class="info-box-text">Projects</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number">{!! $total_projects !!}</span>
                 <!-- The progress section is optional -->
                     <div class="progress">
                     <div class="progress-bar" style="width: 70%"></div>
@@ -42,7 +42,7 @@
             <span class="info-box-icon"><i class="fa fa-download"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Downloads</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number">{!! $total_downloads !!}</span>
                 <!-- The progress section is optional -->
                 <div class="progress">
                     <div class="progress-bar" style="width: 70%"></div>
@@ -56,7 +56,7 @@
             <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number">{!! $total_likes !!}</span>
                 <!-- The progress section is optional -->
                 <div class="progress">
                     <div class="progress-bar" style="width: 70%"></div>

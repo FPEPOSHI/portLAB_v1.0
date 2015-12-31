@@ -19,7 +19,7 @@ class Project extends Migration
             $table->string('project_path',255);
             $table->dateTime('upload_date');
             $table->integer('views');
-            $table->integer('like');
+            $table->integer('likes');
             $table->integer('downloads');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
