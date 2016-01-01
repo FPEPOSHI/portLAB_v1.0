@@ -12,6 +12,7 @@ use DB;
 use URL;
 use Validator;
 use Session;
+use Hash;
 class LoginController extends Controller
 {
     public function index()
@@ -30,7 +31,7 @@ class LoginController extends Controller
     public function checkLogin()
     {
         $username = Input::get('login_usr');
-        $pass = Input::get('login_pass');
+        $pass = md5(Input::get('login_pass'));
         $res = Login::checkLogin($username, $pass);
         if(empty($res))
         {
@@ -45,7 +46,7 @@ class LoginController extends Controller
         $name = Input::get('register_name');
         $email = Input::get('register_email');
         $username = Input::get('register_usr');
-        $pass = Input::get('register_pass');
+        $pass = md5(Input::get('register_pass'));
         $file = array('image' => Input::file('register_photo'));
         // setting up rules
         $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000

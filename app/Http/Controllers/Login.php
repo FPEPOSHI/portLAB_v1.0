@@ -13,6 +13,7 @@ class Login
 {
     public static function checkLogin($usr, $pass)
     {
+
         return DB::select("select user_id, role from Login where username=? and password=?", array($usr, $pass));
     }
 
