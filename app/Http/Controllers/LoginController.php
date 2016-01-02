@@ -17,6 +17,7 @@ class LoginController extends Controller
 {
     public function index()
     {
+        Utils::isLoggedIn();
         return View::make('login');
     }
     public function check()

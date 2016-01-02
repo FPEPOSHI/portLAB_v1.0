@@ -25,6 +25,13 @@ class Utils
         }
     }
 
+    public static function isLoggedIn()
+    {
+        if(Session::has('user_id')){
+            Redirect::to('home')->send();
+        }
+    }
+
     public static function logOut()
     {
 

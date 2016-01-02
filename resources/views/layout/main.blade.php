@@ -16,7 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset("dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
-    
+
     <link href="{{ asset("dist/css/skins/skin-purple.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("css/custom.css")}}" rel="stylesheet" type="text/css" />
 
