@@ -16,11 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset("dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <link href="{{ asset("dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
+    
+    <link href="{{ asset("dist/css/skins/skin-purple.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("css/custom.css")}}" rel="stylesheet" type="text/css" />
 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-purple layout-top-nav">
 <div class="wrapper">
 
     @include('header')
