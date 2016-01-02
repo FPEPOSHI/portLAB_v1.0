@@ -1,6 +1,6 @@
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Recently Added Projects</h3>
+        <h3 class="box-title">User projects</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -10,7 +10,7 @@
     <!-- /.box-header -->
     <div class="box-body">
         <ul class="products-list product-list-in-box">
-            @foreach($latest_pro as $pro)
+            @foreach($projects as $pro)
                 <li class="item">
                     <div class="product-img">
                         <img src="{!! asset('uploads/no_img.jpg') !!}" alt="Product Image">

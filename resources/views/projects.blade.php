@@ -1,13 +1,13 @@
 
         <ul class="users-list clearfix">
             @foreach($projects as $pro)
-                <div class="col-lg-4 col-xs-6">
+                <div class="col-lg-4 col-xs-6" >
                     <!-- small box -->
                     <div class="small-box custom-bg-projects" data-id="{!! $pro->project_id !!}">
                         <div class="inner">
-                            <h3>{!! $pro->p_name !!}</h3>
-                            <p>{!! $pro->c_name !!}</p>
-                            <p>{!! $pro->u_name !!}</p>
+                            <h4>{!! $pro->p_name !!}</h4>
+                            <p data-id='{!! str_replace(" ","-",$pro->c_name) !!}' id="v_c_project">{!! $pro->c_name !!}</p>
+                            <p data-id="{!! str_replace(" ","-",$pro->u_name) !!}" id="u_p_project">{!! $pro->u_name !!}</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-files-o"></i>
@@ -16,16 +16,17 @@
                             <div class="row">
                             <div class="col-sm-6">
                                 <p>{!! $pro->downloads !!}</p>
-                                <i class="fa fa-download"></i>
+                                <i class="fa fa-download"> Download</i>
                             </div>
                             <div class="col-sm-6">
-                                <p>{!! $pro->likes !!}</p>
-                                <i class="fa fa-thumbs-o-up"></i>
+                                <p id="like-nr">{!! $pro->likes !!}</p>
+                                <i id="like-p" data-id="{!! $pro->project_id !!}" class="fa fa-thumbs-o-up"> @if($pro->l_user) Liked @else Like @endif</i>
                             </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- /.widget-user -->
 
                 @endforeach

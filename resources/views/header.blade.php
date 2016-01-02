@@ -1,8 +1,8 @@
 <header class="main-header">
     <!-- Logo -->
     {{--*/$image = "uploads/no_img.png" /*--}}
-    @if(!empty($details[0]->image))
-        {{--*/$image = $details[0]->image /*--}}
+    @if(!empty($details_header[0]->image))
+        {{--*/$image = $details_header[0]->image /*--}}
     @else
         {{--*/ $image = 'no_img.png' /*--}}
     @endif
@@ -12,7 +12,7 @@
     <nav class="navbar navbar-static-top" >
         <div class="container">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand"><b>port</b>LAB</a>
+                <a href="{!! URL::route("home") !!}" class="navbar-brand"><b>port</b>LAB</a>
             </div>
         <!-- Sidebar toggle button-->
         {{--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">--}}
@@ -21,11 +21,11 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-                    </div>
-                </form>
+                {{--<form class="navbar-form navbar-left" role="search">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<input type="text" class="form-control" id="navbar-search-input" placeholder="Search">--}}
+                    {{--</div>--}}
+                {{--</form>--}}
                 <!-- Messages: style can be found in dropdown.less-->
 
                 <!-- Notifications Menu -->
@@ -90,17 +90,17 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{!! asset('uploads/no_img.jpg') !!}" class="user-image" alt="User Image"/>
+                        <img src="{!! asset('uploads/'.$details_header[0]->photo) !!}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Welcome filan</span>
+                        <span class="hidden-xs">Welcome {!! $details_header[0]->name !!}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{!! asset('uploads/no_img.jpg') !!}" class="img-circle" alt="User Image" />
+                            <img src="{!! asset('uploads/'.$details_header[0]->photo) !!}" class="img-circle" alt="User Image" />
                             <p>
-                               name
-                                <small>{!! $details[0]->profession or "Admin" !!}</small>
+                                {!! $details_header[0]->name !!}
+                                <small>{!! $details_header[0]->email !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -118,7 +118,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Lock</a>
+                                <a href="{!! URL::route("profile") !!}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{!! URL::route('logout') !!}" class="btn btn-default btn-flat">Sign out</a>

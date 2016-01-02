@@ -23,4 +23,9 @@ class User
         return $res[0]->nr;
     }
 
+    public static function getUserIDByName($usr)
+    {
+        return DB::select("select user_id from User where name=? LIMIT 1",array(str_replace("-"," ",$usr)))[0]->user_id;
+    }
+
 }

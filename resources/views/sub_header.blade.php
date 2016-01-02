@@ -4,8 +4,7 @@
     {{--</div>--}}
     <div class="col-md-9">
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Projects</li>
+            {!! $map !!}
         </ol>
     </div>
     <div class="col-md-3">
@@ -13,7 +12,7 @@
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myproject">
                 New project
             </button>
-            <button type="button" class="btn btn-danger  btn-lg  ">Premium</button>
+            @if($premium == 0)<button type="button" class="btn btn-danger  btn-lg  ">Premium</button>@endif
         </div>
     </div>
  </div>

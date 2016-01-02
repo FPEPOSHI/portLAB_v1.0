@@ -22,6 +22,11 @@ Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
 Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
+Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
+Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
+Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
+Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +44,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
     Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
     Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
+    Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
+    Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
+    Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
+    Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
+
 
 });
