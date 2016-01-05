@@ -43,4 +43,30 @@
             </div>
     </div>
     </div>
-    @endsection
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container"><h2>Information </h2></div>
+            <div id="exTab3" class="container">
+                <ul  class="nav nav-pills">
+                    <li class="active">
+                        <a  href="#1b" data-toggle="tab">Ndrysho informacione</a>
+                    </li>
+                    <li><a href="#2b" data-toggle="tab">Ndrysho fjalekalim</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="1b">
+                        puno ketu
+                    </div>
+                    <div class="tab-pane" id="2b">
+                        puno ketu
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@endsection
