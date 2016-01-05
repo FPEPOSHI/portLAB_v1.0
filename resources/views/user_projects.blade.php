@@ -21,6 +21,8 @@
                             <span class="product-description">
                               {!! $pro->p_desc !!}
                             </span>
+                        <button type="button" class="btn btn-danger pull-right">Edit</button>
+
                     </div>
                 </li>
              @endforeach
