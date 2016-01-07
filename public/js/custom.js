@@ -19,3 +19,28 @@ $('body').delegate('#like-p','click',function(){
     });
 
 });
+
+$('body').delegate('#inf_up','click',function(){
+    $('#e_sett').modal({
+        backdrop: "static",
+        show: "false",
+    }).on('show.bs.modal', function(){
+        var url = "/profile/editus";
+        $.get(url, null, function(data){
+            $('#editProject').find('#edit-content').html($(data));
+        });
+    }).modal('show');
+});
+
+$('body').delegate('#pass_up','click',function(){
+    $('#e_pass').modal({
+        backdrop: "static",
+        show: "false",
+    }).on('show.bs.modal', function(){
+        var url = "/profile/editp";
+        $.get(url, null, function(data){
+            alert(data);
+            //$('#editProject').find('#edit-content').html($(data));
+        });
+    }).modal('show');
+});

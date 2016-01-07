@@ -25,6 +25,7 @@ class Projects
     public static function getAllCategory(){
         return DB::select("select * from category");
     }
+    /** shtimi */
    public static function insertProject($title,$des,$cat,$c_date,$path,$like,$downloads,$views,$format,$userId){
 
 
@@ -33,6 +34,7 @@ class Projects
                      ,downloads,user_id,category_id,format_id, likes) values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
            array($title,$des,$path,$c_date,$views,$downloads,$userId,$cat,$format, $like));
    }
+
 
     public static function countLikes()
     {
@@ -82,7 +84,7 @@ class Projects
 
     public static function getProjectsProfile($id)
     {
-        return DB::select("select p.title as p_name, p.description as p_desc, u.name as u_name, c.name as c_name from Project p
+        return DB::select("select p.title as p_name,p.project_id, p.description as p_desc, u.name as u_name, c.name as c_name from Project p
                             inner join User u on u.user_id = p.user_id inner join Category c on
                             c.category_id = p.category_id where p.user_id=? order by p.downloads asc ", array($id));
     }
@@ -123,6 +125,19 @@ class Projects
         $date = date("Y-m-d H:i:s");
         $res = DB::select("select * from Premium where user_id=? and end_date > ?",array($id, $date));
         return empty($res) ? 0 : 1;
+    }
+
+    public static function getProjectbyId($id){
+        return DB::select("select * from project where project_id=? limit 1",array($id));
+    }
+    public  static function getProjectedit($title,$des,$cat,$id){
+        DB::select("Update Project set title=?,description=?, category_id=? where project_id=?", array($title,$des,$cat,$id));
+
+    }
+
+    public static function checkUserProject($id_h, $id)
+    {
+        return DB::select("select * from project where user_id=? and project_id=?", array($id_h, $id));
     }
 
 }

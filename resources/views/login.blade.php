@@ -61,7 +61,8 @@
                                     <div class="col-sm-12 controls">
                                       <input style="padding-left: 32px; padding-right: 32px;" id="btn-login"
                                       type="submit" class="btn btn-success" value="Hyr">
-                                      <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> -->
+                                      <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                                      <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>-->
 
                                     </div>
                                 </div>

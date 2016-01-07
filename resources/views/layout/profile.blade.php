@@ -54,6 +54,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div><!-- /.content-wrapper -->
 </div>
 
+@include('edit_pass')
+@include('edit_settings')
 
 <!-- REQUIRED JS SCRIPTS -->
 

@@ -21,7 +21,7 @@
                             <span class="product-description">
                               {!! $pro->p_desc !!}
                             </span>
-                        <button type="button" class="btn btn-danger pull-right">Edit</button>
+                        <a href="{!! URL::route("edit_p",array($pro->project_id )) !!}" class="btn btn-sm btn-danger pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 
                     </div>
                 </li>
