@@ -22,38 +22,27 @@
                 {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
 
                 <div class="form-group">
-                        <label for="exampleTitle" class="col-sm-2 control-label">Title</label>
-                        <div class="col-sm-10">
+                    <label for="exampleTitle" class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-10">
                         <input type="text" class="form-control"
                                name="title" placeholder="Title"/>
                     </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleDescription" class="col-sm-2 control-label">Description</label>
-                        <div class="col-sm-10">
+                </div>
+                <div class="form-group">
+                    <label for="exampleDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
                         <input type="text" class="form-control"
                                name="description" placeholder="Description"/>
-                            </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleDescription" class="col-sm-2 control-label">Project</label>
-                        <div class="col-sm-10">
+                </div>
+                <div class="form-group">
+                    <label for="exampleDescription" class="col-sm-2 control-label">Project</label>
+                    <div class="col-sm-10">
                         <input type="file" class="form-control"
                                name="projectfile" placeholder="Description"/>
                     </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label"
-                               for="Category" >Category</label>
-                        <div class="col-sm-10">
-                            <select name="category" class="form-control">
-                                @foreach($category as $cat)
-                                <option value="{!! $cat->category_id !!}">{!! $cat->name !!}</option>
-                                @endforeach
+                </div>
 
-                            </select>
-                        </div>
-                    </div>
                 <div class="modal-footer">
 
                     <button type="submit" id="send" class="btn btn-primary" >

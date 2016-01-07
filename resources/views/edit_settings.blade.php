@@ -42,18 +42,7 @@
                                name="projectfile" placeholder="Description"/>
                     </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label"
-                               for="Category" >Category</label>
-                        <div class="col-sm-10">
-                            <select name="category" class="form-control">
-                                @foreach($category as $cat)
-                                <option value="{!! $cat->category_id !!}">{!! $cat->name !!}</option>
-                                @endforeach
 
-                            </select>
-                        </div>
-                    </div>
                 <div class="modal-footer">
 
                     <button type="submit" id="send" class="btn btn-primary" >
