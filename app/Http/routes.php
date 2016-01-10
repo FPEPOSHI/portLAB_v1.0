@@ -29,7 +29,7 @@ Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeControlle
 Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
 Route::get("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
-Route::get("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
+Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +54,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
     Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
     Route::get("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
-    Route::get("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
+    Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
+
 });

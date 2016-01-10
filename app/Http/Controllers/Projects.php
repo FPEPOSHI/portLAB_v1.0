@@ -140,4 +140,10 @@ class Projects
         return DB::select("select * from project where user_id=? and project_id=?", array($id_h, $id));
     }
 
+    public  static function getProjectsettings($name,$email,$foto,$usr,$id){
+        DB::select("Update User set name=?,email=?, photo=? where user_id=?", array($name,$email,$foto,$id));
+        DB::select("Update Login set username=? where user_id=?",array($usr,$id));
+    }
+
+
 }

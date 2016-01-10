@@ -13,7 +13,7 @@ class User
 {
     public static function getUser($id)
     {
-        return DB::select('select * from User where user_id=?', array($id));
+        return DB::select('select * from User  inner join Login l on l.user_id = User.user_id where User.user_id=?', array($id));
     }
 
     public static function getUserNumber()

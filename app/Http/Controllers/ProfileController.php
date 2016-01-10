@@ -10,6 +10,7 @@ use View;
 use Illuminate\Support\Facades\Input;
 use Form;
 use Redirect;
+use Validator;
 class ProfileController extends Controller
 {
     public function index()
@@ -52,6 +53,40 @@ class ProfileController extends Controller
         Projects::getProjectedit($t1,$d1,$c1,$id);
      Redirect::to('profile')->send();
     }
+
+    public function editSettings(){
+        $id = Utils::getUserID();
+        $em = Input::get("emer");
+        $emm = Input::get("email");
+        $per = Input::get("username");
+        $file = array('image' => Input::file('foto'));
+        // setting up rules
+        $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+        // doing the validation, passing post data, rules and the messages
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+//            return Redirect::to('login')->withInput()->withErrors($validator);
+//            print_r("error");
+        }
+        if (Input::file('foto')->isValid()) {
+            $destinationPath = 'uploads'; // upload path
+            $extension = Input::file('foto')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+            Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
+            // sending back with message
+        }
+        Projects::getProjectsettings($em,$emm,$fileName,$per,$id);
+
+//        $pro = Projects::getProjectsettings($id);
+//        return View::make("profile")
+//            ->with('details', $user)
+//            ->with('projects',$pro)
+//            ;
+
+        Redirect::to('profile')->send();
+    }
+
     public function viewUsr($usr)
     {
         Utils::isLogged();
