@@ -46,9 +46,15 @@ class Projects
         return DB::select("select sum(downloads) as nr from Project")[0]->nr;
     }
 
-    public static function getFirstFormat()
+    public static function getFirstFormat($s)
     {
-        return DB::select('select * from format FIRST ')[0]->format_id;
+        $res =  DB::select('select * from format where name =? ', array($s));
+        if(empty($res)){
+            DB::select("insert into format(name) values(?)", array($s));
+            $res =  DB::select('select * from format where name =? ', array($s));
+            return $res[0]->format_id;
+        }
+        return $res[0]->format_id;
     }
 
     public static function getLatestProjects()
@@ -140,9 +146,30 @@ class Projects
         return DB::select("select * from project where user_id=? and project_id=?", array($id_h, $id));
     }
 
+    public static function hasUserAnyProject($id_h)
+    {
+        return DB::select("select * from project where user_id=? LIMIT 1", array($id_h));
+    }
+
     public  static function getProjectsettings($name,$email,$foto,$usr,$id){
         DB::select("Update User set name=?,email=?, photo=? where user_id=?", array($name,$email,$foto,$id));
         DB::select("Update Login set username=? where user_id=?",array($usr,$id));
+    }
+
+    public static function downloadProject($id)
+    {
+        return DB::select("select p.project_path as file, f.name as ext from Project p
+                          inner JOIN Format f on f.format_id = p.format_id where project_id=?", array($id));
+    }
+
+    public static function addDownloads($id)
+    {
+        DB::select("update project set downloads = (downloads + 1) where project_id=?",array($id));
+    }
+
+    public static function getUserIdForProject($id)
+    {
+        return DB::select("select user_id from Project where project_id=?", array($id))[0]->user_id;
     }
 
 

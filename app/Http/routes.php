@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
 Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
+Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
 Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
 Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
@@ -45,6 +46,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
     Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
+    Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
     Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
     Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
     Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
