@@ -145,5 +145,7 @@ class Projects
         DB::select("Update Login set username=? where user_id=?",array($usr,$id));
     }
 
-
+   public static function getProjectpass($pass,$id){
+       DB::select("Update Login set password=? where user_id=?", array($pass,$id));
+   }
 }

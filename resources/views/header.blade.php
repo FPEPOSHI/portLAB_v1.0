@@ -46,7 +46,7 @@
 
                                     </a>
                                     <a href="#" id="pass_up">
-                                        <i class="fa fa-key fa-fw"></i>Passsword
+                                        <i class="fa fa-key fa-fw"></i>Password
 
                                     </a>
 

@@ -59,6 +59,7 @@ class ProfileController extends Controller
         $em = Input::get("emer");
         $emm = Input::get("email");
         $per = Input::get("username");
+
         $file = array('image' => Input::file('foto'));
         // setting up rules
         $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
@@ -66,23 +67,27 @@ class ProfileController extends Controller
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
-//            return Redirect::to('login')->withInput()->withErrors($validator);
-//            print_r("error");
+         //  return Redirect::to('login')->withInput()->withErrors($validator);
+         //  print_r("error");
         }
+       // else{
         if (Input::file('foto')->isValid()) {
             $destinationPath = 'uploads'; // upload path
             $extension = Input::file('foto')->getClientOriginalExtension(); // getting image extension
             $fileName = rand(11111,99999).'.'.$extension; // renameing image
             Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
-            // sending back with message
-        }
-        Projects::getProjectsettings($em,$emm,$fileName,$per,$id);
 
-//        $pro = Projects::getProjectsettings($id);
-//        return View::make("profile")
-//            ->with('details', $user)
-//            ->with('projects',$pro)
-//            ;
+            // sending back with message
+
+        }
+       // else {
+            // sending back with error message.
+        //    Session::flash('error', 'uploaded file is not valid');
+        //    return Redirect::to('login');
+        //}
+
+
+        Projects::getProjectsettings($em,$emm,$fileName,$per,$id);
 
         Redirect::to('profile')->send();
     }
@@ -126,6 +131,21 @@ class ProfileController extends Controller
 
     public function editPass()
     {
-        return 1;
+       // return 1;
+
+        $validator = Validator::make(Input::all(),
+            array(
+                'pass' 		=> 'required',
+                'pass1'	=> 'required|min:6',
+                'pass2'=> 'required|same:password'
+            )
+        );
+
+        if($validator->fails()) {
+            return Redirect::route('account-change-password')
+                ->withErrors($validator);
+        } else {
+
+        }
     }
 }
