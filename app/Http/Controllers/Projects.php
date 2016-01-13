@@ -20,7 +20,7 @@ class Projects
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
                             left JOIN Likes as l
-                            on (l.user_id = u.user_id and l.project_id = p.project_id)  group by p.project_id');
+                            on (l.user_id = u.user_id and l.project_id = p.project_id)  group by p.project_id order by p.upload_date DESC  LIMIT 20');
     }
     public static function getAllCategory(){
         return DB::select("select * from category");
