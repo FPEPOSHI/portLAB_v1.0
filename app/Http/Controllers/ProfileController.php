@@ -126,6 +126,7 @@ class ProfileController extends Controller
             ->with('projects',$pro)
             ->with('usr_down',$down)
             ->with('usr_like',$like)
+            ->with('n_pro',count($pro))
             ;
     }
 

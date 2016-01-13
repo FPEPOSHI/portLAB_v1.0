@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-sm-4 border-right">
                         <div class="description-block">
-                            <h5 class="description-header">{!! count($projects) or 0 !!}</h5>
+                            <h5 class="description-header">{!! $n_pro or 0 !!}</h5>
                             <span class="description-text">Projects</span>
                         </div>
                         <!-- /.description-block -->
