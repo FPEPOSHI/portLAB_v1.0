@@ -1,11 +1,14 @@
-+-------------------------------+--+    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html>
 <head>
     <title>Welcome to PortLAB</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{!! asset("welcome/assets/css/main.css") !!}" />
+
+
 
 
 </head>
@@ -24,7 +27,7 @@
                 <p> FUQIA e ZGJEDHJES </p>
             </header>
             <footer>
-                <a href="#banner" class="button circled scrolly">Start</a>
+                <a href="#banner" class="button circled scrolly">Fillo</a>
             </footer>
         </div>
 
@@ -35,7 +38,7 @@
 
 
                 <li><a href="#about">About</a></li>
-                <li><a href="example.html">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="{!! URL::route("login") !!}">Login</a></li>
 
             </ul>
@@ -111,17 +114,22 @@
     <div class="row">
         <div class="col-md-1">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-10">
             Permbajtja Projekti PortLab do te jete nje aplikacion ne web i cili do te permbaje projekte te ngarkuara nga vete perdoruesit dhe ndermjet tyre do behet shkembim i projekteve qe do te perdoren per pune personale.
             Aplikacioni do te kete tre nivele perdoruesish: Administratori, perdorues I thjeshte dhe perdorues Pro. Perdoruesi Pro ka te drejte qe te shkarkoje cdo projekt, por me nje limit mujor dhe kundrejt nje pagese. Ndersa perdoruesi I thjeshte, qe te kete mundesine te shkarkoje nje projekt duhet qe fillimisht ai te kete ngarkuar nje te tille vete dhe me pas mund te shkarkoje projekte te tjera duke I bere nje kerkese per shkarkim poseduesit te vete projektit. Administratori do te menaxhon perdorues, do iu cakton te drejtat per cdo perdorues, si edhe do te aprovon aplikimet e perdoruesve per te shmangur parregullesi ne aplikacion.
             Aplikacioni do te kete nje faqe prezantuese e cila do ti informoje rreth platformes dhe per perdoruesit e interesuar do te ridrejtohen tek nje faqe ku ato do te duhet te logohen per te kaluar ne brendesi te aplikacionit. Me pas do te kete nje nderfaqe profil per cdo perdorues, ku secili mund te ngarkoje projektet e tyre, ti menaxhon ato si edhe profilin e tyre. Do te kete dhe nje nderfaqe ku do te prezantohen projektet me te fundit dhe nje nderfaqe tjeter ku mund te kerkojne per projekte me ane te filtrimit.
 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-1">
             {{--<img src="{!! asset("welcome/img6.jpg") !!}" alt="" />--}}
         </div>
     </div>
 </div>
+
+<hr />
+<div id="contact">
+@include('contact')
+    </div>
 <div class="row">
     <div class="col-md-6">
 
@@ -153,6 +161,7 @@
 </div>
 
 <!-- Scripts -->
+
 <script src="{!! asset("welcome/assets/js/jquery.min.js") !!}"></script>
 <script src="{!! asset("welcome/assets/js/jquery.dropotron.min.js") !!}"></script>
 <script src="{!! asset("welcome/assets/js/jquery.scrolly.min.js") !!}"></script>
