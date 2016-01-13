@@ -16,10 +16,10 @@
                             <div class="row">
                             <div class="col-sm-6">
                                 <p>{!! $pro->downloads !!}</p>
-                                <i class="fa fa-download"> Download</i>
+                                <a href="{!! URL::route("download",array($pro->project_id)) !!}" style="text-decoration:none;color:white"><i id="d-ppp" data-id="{!! $pro->project_id !!}" class="fa fa-download"> Download</i></a>
                             </div>
                             <div class="col-sm-6">
-                                <p id="like-nr">{!! $pro->likes !!}</p>
+                                <p id="l-p-i{!! $pro->project_id !!}">{!! $pro->likes !!}</p>
                                 <i id="like-p" data-id="{!! $pro->project_id !!}" class="fa fa-thumbs-o-up"> @if($pro->l_user) Liked @else Like @endif</i>
                             </div>
                             </div>

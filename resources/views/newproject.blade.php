@@ -19,27 +19,27 @@
             <!-- Modal Body -->
             <div class="modal-body">
 
-                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
+                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data",'onsubmit'=>'return validateFile()','id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
 
                 <div class="form-group">
                         <label for="exampleTitle" class="col-sm-2 control-label">Title</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               name="title" placeholder="Title"/>
+                               name="title" required="required" placeholder="Title"/>
                     </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleDescription" class="col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control"
-                               name="description" placeholder="Description"/>
+                               name="description" required="required" placeholder="Description"/>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleDescription" class="col-sm-2 control-label">Project</label>
                         <div class="col-sm-10">
-                        <input type="file" class="form-control"
-                               name="projectfile" placeholder="Description"/>
+                        <input type="file" class="form-control" id="id-projectfile"
+                               name="projectfile" required="required" placeholder="Description"/>
                     </div>
                     </div>
                     <div class="form-group">
