@@ -60,14 +60,15 @@ class HomeController extends Controller
         $t = Input::get("title");
         $d = Input::get("description");
         $c = Input::get("category");
-        $format = Projects::getFirstFormat();
-        $path = "hhjjj";
+//        $file = Input::get("projectfile");
+        $path = $this->uploadFileToServer();
+        $format = Projects::getFirstFormat($path["ext"]);
         $like = 0;
         $download = 0;
         $views = 0;
         $c_date = date('Y-m-d H:i:s');
         $userId = Utils::getUserID();
-         Projects::insertProject($t,$d,$c,$c_date,$path,$like,$download,$views,$format,$userId);
+         Projects::insertProject($t,$d,$c,$c_date,$path["filename"],$like,$download,$views,$format,$userId);
         Redirect::to('home')->send();
     }
     public function logout()
@@ -102,7 +103,96 @@ class HomeController extends Controller
         }else {
             Projects::likeProject($id,$u_id);
         }
-        return array("likes"=>1, "text"=>"liked");
+        return Projects::getProjectLikes($id);
 //        return Projects::getProjectLikes($id);
+    }
+
+    private function uploadFileToServer()
+    {
+        $folder = "detyra/";
+//        $temp = explode(".", Input::file("projectfile"));
+//        $newfilename = round(microtime(true)) . '.' . end($temp);
+//        $db_path = "$folder" . $newfilename;
+//        $listtype = array(
+//                '.doc' => 'application/msword',
+//                '.docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+//                '.rtf' => 'application/rtf',
+//                '.pdf'=>'application/pdf');
+//            if (is_uploaded_file(Input::file("projectfile"))) {
+//                if ($key = array_search(Input::file("projectfile"), $listtype)) {
+//                    if (move_uploaded_file(Input::file("projectfile"), "$folder" . $newfilename)) {
+//                        return $newfilename;
+//                    }
+//                } else {
+////                    echo "File Type Should Be .Docx or .Pdf or .Rtf Or .Doc";
+//                    return "bosh";
+//
+//                }
+//            }
+        if (!empty($_FILES["projectfile"])) {
+            $myFile = $_FILES["projectfile"];
+
+            if ($myFile["error"] !== UPLOAD_ERR_OK) {
+                return "error";
+            }
+
+            $listtype = array(
+                '.doc' => 'application/msword',
+                '.docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                '.rtf' => 'application/rtf',
+                '.pdf'=>'application/pdf');
+            if ($key = array_search($_FILES["projectfile"], $listtype)) {
+                return "lesh";
+            }
+
+            $name = preg_replace("/[^A-Z0-9._-]/i", "_", $myFile["name"]);
+
+            // don't overwrite an existing file
+            $i = 0;
+            $parts = pathinfo($name);
+            while (file_exists($folder . $name)) {
+                $i++;
+                $name = $parts["filename"] . "-" . $i . "." . $parts["extension"];
+            }
+            // preserve file from temporary directory
+            $success = move_uploaded_file($myFile["tmp_name"],
+                $folder . $name);
+            if (!$success) {
+                return "error";
+            }
+            // set proper permissions on the new file
+            chmod($folder . $name, 0644);
+            return array("filename"=>$name, "ext"=>$parts["extension"]);
+        }
+    }
+
+    public function download($id)
+    {
+        $userId = Utils::getUserID();
+        $u_id = Projects::getUserIdForProject($id);
+        if($userId == $u_id){
+            $this->downloadFinally($id);
+        }
+        $sh = Projects::hasUserAnyProject($userId);
+        if(empty($sh))
+        {
+            //tregoji qe ska te drejte te shkarkoj
+//            Redirect::to('home')->send();
+        }else {
+            $this->downloadFinally($id);
+        }
+
+
+//        Redirect::to('home')->send();
+    }
+
+    public function downloadFinally($id)
+    {
+        $res = Projects::downloadProject($id);
+        $filename = "detyra/" . $res[0]->file;
+        header("Content-disposition: attachment; filename=" . $filename);
+        header("Content-type: application/" . $res[0]->ext);
+        readfile($filename);
+        Projects::addDownloads($id);
     }
 }

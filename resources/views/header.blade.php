@@ -32,6 +32,33 @@
                 <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog fa-fw"></i>
+
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Settings</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <li><!-- start notification -->
+                                    <a href="#" id="inf_up">
+                                        <i class="fa fa-key fa-fw"></i>General Account Settings
+
+                                    </a>
+                                    <a href="#" id="pass_up">
+                                        <i class="fa fa-key fa-fw"></i>Passsword
+
+                                    </a>
+
+                                </li><!-- end notification -->
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
                         <span class="label label-warning">10</span>
                     </a>
@@ -104,22 +131,23 @@
                             </p>
                         </li>
                         <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Profile</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </li>
+                        {{--<li class="user-body">--}}
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Profile</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Sales</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Friends</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="{!! URL::route("profile") !!}" class="btn btn-default btn-flat">Profile</a>
                             </div>
+
                             <div class="pull-right">
                                 <a href="{!! URL::route('logout') !!}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
