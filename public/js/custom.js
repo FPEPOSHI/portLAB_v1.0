@@ -53,14 +53,41 @@ $('body').delegate('#inf_up','click',function(){
 });
 
 $('body').delegate('#pass_up','click',function(){
+
     $('#e_pass').modal({
         backdrop: "static",
         show: "false",
     }).on('show.bs.modal', function(){
-        var url = "/profile/editp";
-        $.get(url, null, function(data){
-            alert(data);
-            //$('#editProject').find('#edit-content').html($(data));
-        });
+
     }).modal('show');
 });
+
+function vPC()
+{
+    if($("#p1-c").val() != $("#p2-c").val())
+    {
+        var d = document.getElementById("w-p1");
+        d.className = d.className + " has-warning";
+        var dd = document.getElementById("w-p2");
+        dd.className = dd.className + " has-warning";
+        return false;
+    }
+    var r = false;
+    $.ajax({
+        async : false,
+        url: "/profile/ch/P?f="+$('#p0-c').val()+"&f1="+$("#p1-c").val(),
+        method: "GET",
+        success: function(data){
+            if(data != 0)
+            {
+                $('#e_pass').modal('toggle');
+                r = false;
+            }else{
+                var dd = document.getElementById("w-p0");
+                dd.className = dd.className + " has-warning";
+            }
+        }
+
+    });
+    return r;
+}

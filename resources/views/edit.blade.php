@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             {!!  Form::open(array('class'=> 'form-horizontal','autocomplete' => 'off', 'id' => 'editProjectForm','role' => 'form',  'route'=> array('edit', $pro_details[0]->project_id)))!!}
+
             <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">Title</label>
                 <div class="col-sm-10">
@@ -13,8 +14,8 @@
              <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control"   value="{!! $pro_details[0]->description!!}"
-                           name="description1" placeholder="Description"/>
+                    <textarea rows="5" class="form-control"
+                           name="description1" placeholder="Description">{!! $pro_details[0]->description!!}</textarea>
                 </div>
             </div>
 
@@ -33,12 +34,30 @@
                         }
                          </select>
                 </div>
+                 <script>
+                     function funk(){
+                         alert("will you delete the project? ");
+
+                     }
+                 </script>
             </div>
             <div class="modal-footer">
 
-                <button type="submit" id="update" class="btn btn-primary" >
-                    Update
-                </button>
+            <div class="row">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <button type="submit" id="delete" onclick="funk()" class="btn btn-m btn-danger pull-left" >
+                        Delete
+                    </button>
+                    <button type="submit" id="update" class="btn btn-primary pull-right" >
+                        Update
+                    </button>
+                </div>
+            </div>
+
+
             </div>
             {!! Form::close() !!}
 

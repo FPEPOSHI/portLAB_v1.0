@@ -141,6 +141,10 @@ class Projects
 
     }
 
+    public static function getProjectdelete($id){
+        DB::select("Delete  from project where project_id=?", array($id));
+    }
+
     public static function checkUserProject($id_h, $id)
     {
         return DB::select("select * from project where user_id=? and project_id=?", array($id_h, $id));
@@ -171,6 +175,12 @@ class Projects
     public static function getUserIdForProject($id)
     {
         return DB::select("select user_id from Project where project_id=?", array($id))[0]->user_id;
+    }
+
+    public static function getProjectsettingsNoPhoto($em, $emm, $per, $id)
+    {
+        DB::select("Update User set name=?,email=? where user_id=?", array($em,$emm,$id));
+        DB::select("Update Login set username=? where user_id=?",array($per,$id));
     }
 
 

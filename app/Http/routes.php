@@ -29,8 +29,9 @@ Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileControll
 Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
 Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
-Route::get("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
+Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
 Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
+Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +56,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
     Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
     Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
-    Route::get("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
+    Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
     Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
+    Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
 
 });

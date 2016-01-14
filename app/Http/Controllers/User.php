@@ -33,4 +33,13 @@ class User
         return $res[0]->user_id;
     }
 
+    public static function checkPassword($id, $old)
+    {
+        return DB::select("select password from login where user_id=? and password=?",array($id,md5($old)));
+    }
+
+    public static function newPassword($id, $new)
+    {
+        DB::select("Update Login set password=? where user_id=?",array(md5($new),$id));
+    }
 }

@@ -31,8 +31,8 @@
                     <div class="form-group">
                         <label for="exampleDescription" class="col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control"
-                               name="description" required="required" placeholder="Description"/>
+                        <textarea rows="5" class="form-control"
+                               name="description" required="required" placeholder="Description"></textarea>
                             </div>
                     </div>
                     <div class="form-group">

@@ -114,7 +114,7 @@
                                 <div class="form-group">
                                     <label for="register_photo" class="col-md-3 control-label">Foto</label>
                                     <div class="col-md-9">
-                                        <input type="file"  required="required" class="form-control" name="register_photo" placeholder="foto">
+                                        <input type="file"  class="form-control" name="register_photo" placeholder="foto">
                                     </div>
                                 </div>
                                 <div class="form-group">

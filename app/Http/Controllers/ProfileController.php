@@ -51,6 +51,7 @@ class ProfileController extends Controller
         $d1 = Input::get("description1");
         $c1 = Input::get("category1");
         Projects::getProjectedit($t1,$d1,$c1,$id);
+        Projects::getProjectdelete($id);
      Redirect::to('profile')->send();
     }
 
@@ -60,36 +61,48 @@ class ProfileController extends Controller
         $emm = Input::get("email");
         $per = Input::get("username");
 
-        $file = array('image' => Input::file('foto'));
-        // setting up rules
-        $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
-        // doing the validation, passing post data, rules and the messages
-        $validator = Validator::make($file, $rules);
-        if ($validator->fails()) {
-            // send back to the page with the input data and errors
-         //  return Redirect::to('login')->withInput()->withErrors($validator);
-         //  print_r("error");
+        if(Input::file('foto')) {
+            $file = array('image' => Input::file('foto'));
+            // setting up rules
+            $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+            // doing the validation, passing post data, rules and the messages
+            $validator = Validator::make($file, $rules);
+            if ($validator->fails()) {
+                // send back to the page with the input data and errors
+                //  return Redirect::to('login')->withInput()->withErrors($validator);
+                //  print_r("error");
+            }
+            // else{
+            if (Input::file('foto')->isValid()) {
+                $destinationPath = 'uploads'; // upload path
+                $extension = Input::file('foto')->getClientOriginalExtension(); // getting image extension
+                $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
+
+            }
+
+            Projects::getProjectsettings($em, $emm, $fileName, $per, $id);
+        }else{
+            Projects::getProjectsettingsNoPhoto($em, $emm, $per, $id);
+
         }
-       // else{
-        if (Input::file('foto')->isValid()) {
-            $destinationPath = 'uploads'; // upload path
-            $extension = Input::file('foto')->getClientOriginalExtension(); // getting image extension
-            $fileName = rand(11111,99999).'.'.$extension; // renameing image
-            Input::file('foto')->move($destinationPath, $fileName); // uploading file to given path
-
-            // sending back with message
-
-        }
-       // else {
-            // sending back with error message.
-        //    Session::flash('error', 'uploaded file is not valid');
-        //    return Redirect::to('login');
-        //}
-
-
-        Projects::getProjectsettings($em,$emm,$fileName,$per,$id);
 
         Redirect::to('profile')->send();
+    }
+
+    public function checkPassword()
+    {
+        $new = $_GET['f1'];
+        $old = $_GET['f'];
+        $id = Utils::getUserID();
+        $res = User::checkPassword($id, $old);
+        if(!empty($res))
+        {
+             User::newPassword($id, $new);
+            //bej update ketu
+            return 1;
+        }
+        return 0;
     }
 
     public function viewUsr($usr)
@@ -133,20 +146,6 @@ class ProfileController extends Controller
     public function editPass()
     {
        // return 1;
-
-        $validator = Validator::make(Input::all(),
-            array(
-                'pass' 		=> 'required',
-                'pass1'	=> 'required|min:6',
-                'pass2'=> 'required|same:password'
-            )
-        );
-
-        if($validator->fails()) {
-            return Redirect::route('account-change-password')
-                ->withErrors($validator);
-        } else {
-
-        }
+        print_r(Input::get('pass1'));
     }
 }

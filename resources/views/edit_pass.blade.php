@@ -16,25 +16,25 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
 
-                    {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'pass','role' => 'form', 'route'=> 'edit_pass')) !!}
+                    {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data",'onsubmit'=>'return vPC()', 'id' => 'pass','role' => 'form', 'route'=> 'edit_pass')) !!}
 
 
-                    <div class="form-group">
+                    <div id="w-p0"class="form-group">
                         <label for="pass" class="col-md-3 control-label">Password</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="pass" required="required" placeholder="">
+                            <input type="password" id="p0-c" class="form-control" name="pass" required="required" placeholder="">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="passs" class="col-md-3 control-label">New</label>
+                    <div id="w-p1" class="form-group">
+                        <label for="passs"  class="col-md-3 control-label">New</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="pass1" required="required" placeholder="">
+                            <input type="password" id="p1-c" class="form-control" name="pass1" required="required" placeholder="">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div id="w-p2" class="form-group">
                         <label for="passss" class="col-md-3 control-label">Retype new</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="pass2" required="required" placeholder="">
+                            <input type="password" id="p2-c" class="form-control" name="pass2" required="required" placeholder="">
                         </div>
                     </div>
 

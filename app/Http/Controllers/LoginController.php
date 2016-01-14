@@ -48,22 +48,25 @@ class LoginController extends Controller
         $email = Input::get('register_email');
         $username = Input::get('register_usr');
         $pass = md5(Input::get('register_pass'));
-        $file = array('image' => Input::file('register_photo'));
-        // setting up rules
-        $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
-        // doing the validation, passing post data, rules and the messages
-        $validator = Validator::make($file, $rules);
-        if ($validator->fails()) {
-            // send back to the page with the input data and errors
+        $fileName = 'no_img.jpg';
+        if(Input::file('register_photo')) {
+            $file = array('image' => Input::file('register_photo'));
+            // setting up rules
+            $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+            // doing the validation, passing post data, rules and the messages
+            $validator = Validator::make($file, $rules);
+            if ($validator->fails()) {
+                // send back to the page with the input data and errors
 //            return Redirect::to('login')->withInput()->withErrors($validator);
 //            print_r("error");
-        }
-        if (Input::file('register_photo')->isValid()) {
-            $destinationPath = 'uploads'; // upload path
-            $extension = Input::file('register_photo')->getClientOriginalExtension(); // getting image extension
-            $fileName = rand(11111,99999).'.'.$extension; // renameing image
-            Input::file('register_photo')->move($destinationPath, $fileName); // uploading file to given path
-            // sending back with message
+            }
+            if (Input::file('register_photo')->isValid()) {
+                $destinationPath = 'uploads'; // upload path
+                $extension = Input::file('register_photo')->getClientOriginalExtension(); // getting image extension
+                $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                Input::file('register_photo')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+            }
         }
         Login::insertUser($name,$username,$pass,$fileName,$email);
         $this->sendEmail($email, $name);
