@@ -209,9 +209,9 @@ class ProfileController extends Controller
 
                 </div>
                 <div class="col-sm-10">
-                    <button onclick="d_p_u()" id="delete"  class="btn btn-m btn-danger pull-left" >
-    Delete
-                    </button>
+                    <input type="button" onclick="d_p_u('.$pro_details[0]->project_id.')" id="delete" value="Delete" class="btn btn-m btn-danger pull-left" >
+
+                    </input>
                     <button type="submit" id="update" class="btn btn-primary pull-right" >
     Update
                     </button>
@@ -223,5 +223,13 @@ class ProfileController extends Controller
     $t .='</div>
     </div>';
         return $t;
+    }
+
+    public function deleteProject($id)
+    {
+        Utils::isLogged();
+        Projects::getProjectdelete($id);
+        Redirect::to("profile")->send();
+
     }
 }

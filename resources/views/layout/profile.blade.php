@@ -57,6 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @include('edit_pass')
 @include('edit_settings')
 @include('edit_project')
+@include('confirm_delete')
 
 <!-- REQUIRED JS SCRIPTS -->
 

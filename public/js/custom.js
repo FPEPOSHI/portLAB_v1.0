@@ -9,6 +9,7 @@ $('body').delegate('#v_c_project','click',function(){
 $('body').delegate('#like-p','click',function(){
     var c = $(this).data('id');
     var url = "/home/project/like/" + c;
+
     $.get(url, null, function (data) {
         if (data != -1) {
             $("#l-p-i"+c).text(data);
@@ -97,6 +98,20 @@ function vPC()
     });
     return r;
 }
+
+function d_p_u(a)
+{
+    $('#d-project').modal({
+        backdrop: "static",
+        show: "false",
+    }).on('show.bs.modal', function(){
+
+    }).modal('show');
+}
+function getID()
+{
+    return $("#p-id-d-c").val();
+}
 function e_p(a)
 {
     $('#e_prj').modal({
@@ -106,6 +121,7 @@ function e_p(a)
         var url = "/profile/pro/update?i="+a;
         $.get(url, null, function(data){
             $('#e_prj').find('#edt-pro-content').html($(data));
+            $("#p-id-d-c").val(a);
         });
     }).modal('show');
 }
