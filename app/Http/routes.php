@@ -28,10 +28,11 @@ Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index")
 Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
 Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
 Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
-Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
+//Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
 Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
 Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
 Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
+Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +56,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
     Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
     Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
-    Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
+//    Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
     Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
     Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
     Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
+    Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
+
 
 });

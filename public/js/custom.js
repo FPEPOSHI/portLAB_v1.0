@@ -12,6 +12,12 @@ $('body').delegate('#like-p','click',function(){
     $.get(url, null, function (data) {
         if (data != -1) {
             $("#l-p-i"+c).text(data);
+            if($("#like-p-"+c).text() === "Like")
+                $("#like-p-"+c).text("Liked");
+            else
+                $("#like-p-"+c).text("Like");
+
+
         }
     });
 });
@@ -90,4 +96,16 @@ function vPC()
 
     });
     return r;
+}
+function e_p(a)
+{
+    $('#e_prj').modal({
+        backdrop: "static",
+        show: "false",
+    }).on('show.bs.modal', function(){
+        var url = "/profile/pro/update?i="+a;
+        $.get(url, null, function(data){
+            $('#e_prj').find('#edt-pro-content').html($(data));
+        });
+    }).modal('show');
 }

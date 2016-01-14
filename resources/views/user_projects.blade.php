@@ -16,15 +16,16 @@
                         <img src="{!! asset('uploads/no_img.jpg') !!}" alt="Product Image">
                     </div>
                     <div class="product-info">
-                        <a href="javascript:;" class="product-title">{!! $pro->p_name !!}</a>
+                        <a href="" class="product-title">{!! $pro->p_name !!}</a>
                             <a href="{!! URL::route("bycategory", array(str_replace(" ","-",$pro->c_name))) !!}"><span class="label label-warning pull-right">{!! $pro->c_name !!}</span></a>
                             <span class="product-description">
                               {!! $pro->p_desc !!}
                             </span>
-                        <a href="{!! URL::route("edit_p",array($pro->project_id )) !!}" class="btn btn-sm btn-danger pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                        <div onclick="{!! "e_p(".$pro->project_id.")" !!}" class="btn btn-sm btn-danger pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</div>
 
                     </div>
                 </li>
+
              @endforeach
             </ul>
         </div>

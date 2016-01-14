@@ -47,12 +47,23 @@ class ProfileController extends Controller
 
     }
     public function edit($id){
+        Utils::isLogged();
+        $id_h = Utils::getUserID();
+        $res = Projects::checkUserProject($id_h,$id);
+        if(empty($res))
+        {
+            $user_h = User::getUser($id_h);
+            $pro = Projects::getProjectsProfile($id_h);
+            return View::make("error404")
+                ->with('details_header',$user_h)
+                ->with('projects',$pro)
+                ;
+        }
         $t1 = Input::get("pro-title-e");
         $d1 = Input::get("description1");
         $c1 = Input::get("category1");
         Projects::getProjectedit($t1,$d1,$c1,$id);
-        Projects::getProjectdelete($id);
-     Redirect::to('profile')->send();
+        Redirect::to('profile')->send();
     }
 
     public function editSettings(){
@@ -147,5 +158,70 @@ class ProfileController extends Controller
     {
        // return 1;
         print_r(Input::get('pass1'));
+    }
+
+    public function getProjectToUpdate()
+    {
+        $id = $_GET['i'];
+        $pro_details = Projects::getProjectbyId($id);
+        $category = Projects::getAllCategory();
+        $t ='<div class="row">
+        <div class="col-md-12">';
+        $t .=Form::open(array('class'=> 'form-horizontal','autocomplete' => 'off', 'id' => 'editProjectForm','role' => 'form',  'route'=> array('edit', $pro_details[0]->project_id)));
+
+          $t .='<div class="form-group">
+                <label for="title" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="'. $pro_details[0]->title.'"
+                           name="pro-title-e" placeholder="Title"/>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea rows="5" class="form-control"
+                           name="description1" placeholder="Description">'. $pro_details[0]->description.'</textarea>
+                </div>
+            </div>
+
+             <div class="form-group">
+                <label class="col-sm-2 control-label"
+                       for="Category" >Category</label>
+                <div class="col-sm-10">
+                    <select  name="category1" class="form-control">';
+    foreach($category as $cat) {
+        if($pro_details[0]->category_id == $cat->category_id) {
+            $t .= '<option selected value="'. $cat->category_id .'"> '. $cat->name.' </option>';
+        }
+        else {
+            $t .= '<option value="'. $cat->category_id.'">'.$cat->name.' </option>';
+            }
+
+        }
+          $t.= '</select>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            <div class="row">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <button onclick="d_p_u()" id="delete"  class="btn btn-m btn-danger pull-left" >
+    Delete
+                    </button>
+                    <button type="submit" id="update" class="btn btn-primary pull-right" >
+    Update
+                    </button>
+                </div>
+            </div>
+            </div>';
+            $t .=Form::close();
+
+    $t .='</div>
+    </div>';
+        return $t;
     }
 }

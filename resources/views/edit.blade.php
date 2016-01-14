@@ -34,12 +34,7 @@
                         }
                          </select>
                 </div>
-                 <script>
-                     function funk(){
-                         alert("will you delete the project? ");
 
-                     }
-                 </script>
             </div>
             <div class="modal-footer">
 

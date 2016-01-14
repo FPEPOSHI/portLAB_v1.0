@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <p id="l-p-i{!! $pro->project_id !!}">{!! $pro->likes !!}</p>
-                                <i id="like-p" data-id="{!! $pro->project_id !!}" class="fa fa-thumbs-o-up"> @if($pro->l_user) Liked @else Like @endif</i>
+                                <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">@if($pro->l_user) Liked @else Like @endif</i></div>
                             </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
         <!-- /.users-list -->
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="javascript::" class="uppercase">View more</a>
+        <a href="" class="uppercase">View more</a>
     </div>
     <!-- /.box-footer -->
 
