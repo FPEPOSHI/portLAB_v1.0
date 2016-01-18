@@ -13,7 +13,7 @@ $('body').delegate('#like-p','click',function(){
     $.get(url, null, function (data) {
         if (data != -1) {
             $("#l-p-i"+c).text(data);
-            if($("#like-p-"+c).text() === "Like")
+            if($("#like-p-"+c).text() === "Like" || $("#like-p-"+c).text() == "Like")
                 $("#like-p-"+c).text("Liked");
             else
                 $("#like-p-"+c).text("Like");

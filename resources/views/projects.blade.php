@@ -20,7 +20,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <p id="l-p-i{!! $pro->project_id !!}">{!! $pro->likes !!}</p>
-                                <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">@if($pro->l_user) Liked @else Like @endif</i></div>
+                                @if($pro->l_user)
+                                <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">Liked</i></div>
+                                @else
+                                <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">Like</i></div>
+                                @endif
                             </div>
                             </div>
                         </div>
