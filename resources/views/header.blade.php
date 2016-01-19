@@ -117,17 +117,17 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{!! asset('uploads/'.$details_header[0]->photo) !!}" class="user-image" alt="User Image"/>
+                        <img src="{!! asset('uploads/'.$details_header[0]->photo) or "" !!}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">Welcome {!! $details_header[0]->name !!}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{!! asset('uploads/'.$details_header[0]->photo) !!}" class="img-circle" alt="User Image" />
+                            <img src="{!! asset('uploads/'.$details_header[0]->photo) or ""!!}" class="img-circle" alt="User Image" />
                             <p>
-                                {!! $details_header[0]->name !!}
-                                <small>{!! $details_header[0]->email !!}</small>
+                                {!! $details_header[0]->name or "Admin" !!}
+                                <small>{!! $details_header[0]->email or "" !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->

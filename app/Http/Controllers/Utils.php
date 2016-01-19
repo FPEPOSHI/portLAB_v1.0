@@ -52,4 +52,18 @@ class Utils
         Session::set('role',$role);
     }
 
+
+
+    public static function setSuperUser()
+    {
+        Session::set('superuser',1);
+        Session::set('role',1);
+
+    }
+    public static function getSuperUser()
+    {
+        return Session::get('superuser') && (Session::get('role') == 1);
+    }
+
+
 }

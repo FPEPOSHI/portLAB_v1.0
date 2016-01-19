@@ -15,9 +15,39 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if (Utils::getSuperUser())
+        {
+
+            return;
+        }
         Utils::isLogged();
         $projects = Projects::getAllProjects();
         return $this->returnView($projects,1,"");
+    }
+
+    public function getAdminView()
+    {
+//        $id = Utils::getUserID();
+        $user = User::getUser(-1);
+//        $user_number = User::getUserNumber();
+//        $like_number = Projects::countLikes();
+//        $download_number = Projects::countDownloads();
+//        $projects_number = Projects::countProjects();
+//        $cat = Projects::getAllCategory();
+//        $latest_projects = Projects::getLatestProjects();
+//        $map = $this->getMapp($map, $cat_name);
+//        $premium = Projects::isPremium($id);
+        return View::make('admin')
+            ->with('details_header',$user)
+//            ->with('total_users',$user_number)
+//            ->with('projects', $projects)
+//            ->with("category", $cat)
+//            ->with("latest_pro", $latest_projects)
+//            ->with("total_likes", $like_number)
+//            ->with("total_downloads", $download_number)
+//            ->with("total_projects", $projects_number)
+//            ->with("premium", $premium)
+            ;
     }
 
     public  function returnView($projects, $map, $cat_name)

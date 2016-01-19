@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Hash;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -38,6 +38,11 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('category')->insert([
             'name' => "Physics",
+        ]);
+        DB::table('login')->insert([
+            'username' => "[super[*]user]21*",
+            'password' => "5fc024e9921765fa1cfb5eb2f042e865",//#bufe99*{}.
+            'role' => 1,
         ]);
 
 

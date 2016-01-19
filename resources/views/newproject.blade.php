@@ -19,7 +19,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
 
-                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data",'onsubmit'=>'return validateFile()','id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
+                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data",'onsubmit'=>'return isFile()','id' => 'newprojectform','role' => 'form', 'route'=> 'newproject')) !!}
 
                 <div class="form-group">
                         <label for="exampleTitle" class="col-sm-2 control-label">Title</label>
@@ -35,7 +35,7 @@
                                name="description" required="required" placeholder="Description"></textarea>
                             </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="error-file-n-p">
                         <label for="exampleDescription" class="col-sm-2 control-label">Project</label>
                         <div class="col-sm-10">
                         <input type="file" class="form-control" id="id-projectfile"

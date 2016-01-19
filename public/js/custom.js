@@ -125,3 +125,28 @@ function e_p(a)
         });
     }).modal('show');
 }
+
+function viewMore()
+{
+    alert("view more");
+}
+
+function getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+function isFile() {
+    var ext = getExtension($('#id-projectfile').val());
+    switch (ext.toLowerCase()) {
+        case 'pdf':
+        case 'doc':
+        case 'docx':
+        case 'ppt':
+        case 'pptx':
+            //etc
+            return true;
+    }
+    var dd = document.getElementById("error-file-n-p");
+    dd.className = dd.className + " has-warning";
+    return false;
+}

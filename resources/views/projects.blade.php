@@ -38,7 +38,7 @@
         <!-- /.users-list -->
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="" class="uppercase">View more</a>
+        <a href="javascript:viewMore()" class="uppercase">View more</a>
     </div>
     <!-- /.box-footer -->
 
