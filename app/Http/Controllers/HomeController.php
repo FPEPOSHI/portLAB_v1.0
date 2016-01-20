@@ -230,7 +230,7 @@ class HomeController extends Controller
         $s = $_GET["s"];
         $search = Projects::search($s);
 
-        
+
         $t = ' <ul class="users-list clearfix">';
         foreach ($search as $pro) {
             $t .= ' <div class="col-lg-4 col-xs-6" >
@@ -251,7 +251,7 @@ class HomeController extends Controller
             $t .= ' <a href="' . URL::route("download", array($pro->project_id)) . '" style="text-decoration:none;color:white"><i id="d-ppp" data-id="' . $pro->project_id . ' ", class="fa fa-download"> Download</i></a>
                             </div>';
             $t .= '<div class="col-sm-6">
-                                <p id="l-p-i $pro->project_id ">' . $pro->likes . '</p>';
+                                <p id="l-p-i'. $pro->project_id.' ">' . $pro->likes . '</p>';
             if ($pro->l_user)
                 $t .= ' <div id="like-p" data-id=" ' . $pro->project_id . ' "><i id="  like-p-' . $pro->project_id . '"  class="fa fa-thumbs-o-up">Liked</i></div>';
             else
