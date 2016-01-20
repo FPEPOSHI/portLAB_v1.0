@@ -150,3 +150,6 @@ function isFile() {
     dd.className = dd.className + " has-warning";
     return false;
 }
+function search(){
+    alert("test");
+}
