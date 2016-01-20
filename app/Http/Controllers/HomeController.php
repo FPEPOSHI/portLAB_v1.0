@@ -15,14 +15,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if (Utils::getSuperUser())
-        {
+        if (Utils::getSuperUser()) {
 
             return;
         }
         Utils::isLogged();
         $projects = Projects::getAllProjects();
-        return $this->returnView($projects,1,"");
+        return $this->returnView($projects, 1, "");
     }
 
     public function getAdminView()
@@ -38,7 +37,7 @@ class HomeController extends Controller
 //        $map = $this->getMapp($map, $cat_name);
 //        $premium = Projects::isPremium($id);
         return View::make('admin')
-            ->with('details_header',$user)
+            ->with('details_header', $user)
 //            ->with('total_users',$user_number)
 //            ->with('projects', $projects)
 //            ->with("category", $cat)
@@ -50,7 +49,7 @@ class HomeController extends Controller
             ;
     }
 
-    public  function returnView($projects, $map, $cat_name)
+    public function returnView($projects, $map, $cat_name)
     {
         $id = Utils::getUserID();
         $user = User::getUser($id);
@@ -63,8 +62,8 @@ class HomeController extends Controller
         $map = $this->getMapp($map, $cat_name);
         $premium = Projects::isPremium($id);
         return View::make('home')
-            ->with('details_header',$user)
-            ->with('total_users',$user_number)
+            ->with('details_header', $user)
+            ->with('total_users', $user_number)
             ->with('projects', $projects)
             ->with("category", $cat)
             ->with("latest_pro", $latest_projects)
@@ -72,8 +71,7 @@ class HomeController extends Controller
             ->with("total_downloads", $download_number)
             ->with("total_projects", $projects_number)
             ->with("map", $map)
-            ->with("premium", $premium)
-            ;
+            ->with("premium", $premium);
 
     }
 
@@ -82,11 +80,12 @@ class HomeController extends Controller
         Utils::isLogged();
         $cat_id = Projects::getCategoryID($cat);
         $projects = Projects::getAllProjectsByCategory($cat_id);
-        return $this->returnView($projects,2, $cat);
+        return $this->returnView($projects, 2, $cat);
     }
 
 
-    public function newproject(){
+    public function newproject()
+    {
         $t = Input::get("title");
         $d = Input::get("description");
         $c = Input::get("category");
@@ -98,9 +97,10 @@ class HomeController extends Controller
         $views = 0;
         $c_date = date('Y-m-d H:i:s');
         $userId = Utils::getUserID();
-         Projects::insertProject($t,$d,$c,$c_date,$path["filename"],$like,$download,$views,$format,$userId);
+        Projects::insertProject($t, $d, $c, $c_date, $path["filename"], $like, $download, $views, $format, $userId);
         Redirect::to('home')->send();
     }
+
     public function logout()
     {
         Utils::logOut();
@@ -109,16 +109,16 @@ class HomeController extends Controller
     private function getMapp($map, $cat)
     {
         $str = "";
-        switch($map){
+        switch ($map) {
             case 1:
                 $str .= '
-            <li><a href="'.URL::route("home").'"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="' . URL::route("home") . '"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Projects</li>';
                 break;
             case 2:
                 $str .= '
-            <li><a href="'.URL::route("home").'"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">'.str_replace("-"," ",$cat).'</li>';
+            <li><a href="' . URL::route("home") . '"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">' . str_replace("-", " ", $cat) . '</li>';
                 break;
         }
         return $str;
@@ -127,11 +127,11 @@ class HomeController extends Controller
     public function like($id)
     {
         $u_id = Utils::getUserID();
-        $exist = Projects::existLike($id,$u_id);
-        if(!empty($exist)) {
-            Projects::dislikeProject($id,$u_id);
-        }else {
-            Projects::likeProject($id,$u_id);
+        $exist = Projects::existLike($id, $u_id);
+        if (!empty($exist)) {
+            Projects::dislikeProject($id, $u_id);
+        } else {
+            Projects::likeProject($id, $u_id);
         }
         return Projects::getProjectLikes($id);
 //        return Projects::getProjectLikes($id);
@@ -170,7 +170,7 @@ class HomeController extends Controller
                 '.doc' => 'application/msword',
                 '.docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 '.rtf' => 'application/rtf',
-                '.pdf'=>'application/pdf');
+                '.pdf' => 'application/pdf');
             if ($key = array_search($_FILES["projectfile"], $listtype)) {
                 return "lesh";
             }
@@ -192,7 +192,7 @@ class HomeController extends Controller
             }
             // set proper permissions on the new file
             chmod($folder . $name, 0644);
-            return array("filename"=>$name, "ext"=>$parts["extension"]);
+            return array("filename" => $name, "ext" => $parts["extension"]);
         }
     }
 
@@ -200,15 +200,14 @@ class HomeController extends Controller
     {
         $userId = Utils::getUserID();
         $u_id = Projects::getUserIdForProject($id);
-        if($userId == $u_id){
+        if ($userId == $u_id) {
             $this->downloadFinally($id);
         }
         $sh = Projects::hasUserAnyProject($userId);
-        if(empty($sh))
-        {
+        if (empty($sh)) {
             //tregoji qe ska te drejte te shkarkoj
 //            Redirect::to('home')->send();
-        }else {
+        } else {
             $this->downloadFinally($id);
         }
 
@@ -225,4 +224,49 @@ class HomeController extends Controller
         readfile($filename);
         Projects::addDownloads($id);
     }
+
+    public function searchProject()
+    {
+        $s = $_GET["s"];
+        $search = Projects::search($s);
+        $t = ' <ul class="users-list clearfix">';
+        foreach ($search as $pro) {
+            $t .= ' <div class="col-lg-4 col-xs-6" >
+                    <!-- small box -->
+                    <div class="small-box custom-bg-projects" data-id=" $pro->project_id ">
+                        <div class="inner">
+                            <h4>' . $pro->p_name . '</h4>
+                            <p data-id="'.str_replace(" ","-",$pro->c_name).'" id="v_c_project">' . $pro->c_name . '</p>
+                            <p data-id=" '. str_replace(" ","-",$pro->u_name) .'" id="u_p_project">' . $pro->u_name . '</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-files-o"></i>
+                        </div>
+                        <div class="small-box-footer">
+                            <div class="row">
+                            <div class="col-sm-6">
+                                <p>' . $pro->downloads . '</p>';
+            $t .= ' <a href="' . URL::route("download", array($pro->project_id)) . '" style="text-decoration:none;color:white"><i id="d-ppp" data-id="' . $pro->project_id . ' ", class="fa fa-download"> Download</i></a>
+                            </div>';
+            $t .= '<div class="col-sm-6">
+                                <p id="l-p-i $pro->project_id ">' . $pro->likes . '</p>';
+            if ($pro->l_user)
+                $t .= ' <div id="like-p" data-id=" ' . $pro->project_id . ' "><i id="  like-p-' . $pro->project_id . '"  class="fa fa-thumbs-o-up">Liked</i></div>';
+            else
+                $t .= ' <div id="like-p" data-id=" ' . $pro->project_id . '"><i id="like-p- ' . $pro->project_id . ' "  class="fa fa-thumbs-o-up">Like</i></div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+
+
+        }
+       $t .=' </ul>';
+
+
+            return $t;
+        }
+
 }

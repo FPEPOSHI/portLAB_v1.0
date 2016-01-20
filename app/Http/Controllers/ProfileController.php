@@ -234,4 +234,5 @@ class ProfileController extends Controller
         Redirect::to("profile")->send();
 
     }
+
 }

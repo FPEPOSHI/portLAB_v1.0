@@ -34,7 +34,7 @@ Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController
 Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
 Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
 Route::get("/profile/pro/delete/{id}", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
-
+Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -63,6 +63,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
     Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
     Route::get("/profile/pro/delete/{id}", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
+    Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
+
 
 
 

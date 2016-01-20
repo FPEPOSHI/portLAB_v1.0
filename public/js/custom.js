@@ -150,6 +150,18 @@ function isFile() {
     dd.className = dd.className + " has-warning";
     return false;
 }
+
+
 function search(){
-    alert("test");
+
+    $.ajax({
+        async : true,
+        url :" /home/search?s="+$("#navbar-search-input").val() ,
+        method : "GET",
+        success : function(data){
+        $("#a-p-s-d").html(data);
+        }
+    });
+
+
 }
