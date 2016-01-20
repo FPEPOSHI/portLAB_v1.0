@@ -34,19 +34,24 @@ class LoginController extends Controller
 
         $username = Input::get('login_usr');
         $pass = md5(Input::get('login_pass'));
-        if($username == "super.user#99*21." && $pass == "#bufe99*{}.")
+        if($username == "[super[*]user]21*")
         {
-            Utils::setSuperUser();
-            Redirect::to('login')->send();
-            return;
-        }
-        $res = Login::checkLogin($username, $pass);
-        if(empty($res))
-        {
-            Redirect::to('login')->send();
+            $res = Login::checkLogin($username, $pass);
+            if(!empty($res)) {
+                Utils::setSuperUser();
+                Redirect::to('home')->send();
+            }else {
+                Redirect::to('login')->send();
+                return;
+            }
         }else{
-            Utils::setUser($res[0]->user_id,$res[0]->role);
-            Redirect::to('home')->send();
+            $res = Login::checkLogin($username, $pass);
+            if (empty($res)) {
+                Redirect::to('login')->send();
+            } else {
+                Utils::setUser($res[0]->user_id, $res[0]->role);
+                Redirect::to('home')->send();
+            }
         }
     }
     public function registerUser()
