@@ -22,21 +22,21 @@ $('body').delegate('#like-p','click',function(){
     });
 });
 
-function likePro(c)
-{
-    var url = "/home/project/like/" + c;
-    $.get(url, null, function (data) {
-        if (data != -1) {
-            $("#l-p-i"+c).text(data);
-            if($("#like-p-"+c).text() === "Like" || $("#like-p-"+c).text() == "Like")
-                $("#like-p-"+c).text("Liked");
-            else
-                $("#like-p-"+c).text("Like");
-
-
-        }
-    });
-}
+//function likePro(c)
+//{
+//    var url = "/home/project/like/" + c;
+//    $.get(url, null, function (data) {
+//        if (data != -1) {
+//            $("#l-p-i"+c).text(data);
+//            if($("#like-p-"+c).text() === "Like" || $("#like-p-"+c).text() == "Like")
+//                $("#like-p-"+c).text("Liked");
+//            else
+//                $("#like-p-"+c).text("Like");
+//
+//
+//        }
+//    });
+//}
 $('body').delegate('#d-ppppp','click',function(){
     var c = $(this).data('id');
     //alert(c);
