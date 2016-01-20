@@ -93,19 +93,4 @@ class LoginController extends Controller
             echo "Message could not be sent...";
         }
     }
-
-    public function contact()
-    {
-        $name = Input::get('InputName');
-        $email = Input::get('InputEmail');
-        $sms = Input::get('InputSms');
-        $to = "festimpeposhi95@gmail.com";
-        $subject = "Email nga Faqja ";
-        $message = "<b>Email nga: ".$name."</b>\n\n"+$sms;
-        $header = "From:".$email." \r\n";
-        $header .= "MIME-Version: 1.0\r\n";
-        $header .= "Content-type: text/html\r\n";
-        $retval = mail ($to,$subject,$message,$header);
-        Redirect::to("/")->send();
-    }
 }

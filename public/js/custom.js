@@ -9,7 +9,6 @@ $('body').delegate('#v_c_project','click',function(){
 $('body').delegate('#like-p','click',function(){
     var c = $(this).data('id');
     var url = "/home/project/like/" + c;
-
     $.get(url, null, function (data) {
         if (data != -1) {
             $("#l-p-i"+c).text(data);
@@ -22,6 +21,22 @@ $('body').delegate('#like-p','click',function(){
         }
     });
 });
+
+function likePro(c)
+{
+    var url = "/home/project/like/" + c;
+    $.get(url, null, function (data) {
+        if (data != -1) {
+            $("#l-p-i"+c).text(data);
+            if($("#like-p-"+c).text() === "Like" || $("#like-p-"+c).text() == "Like")
+                $("#like-p-"+c).text("Liked");
+            else
+                $("#like-p-"+c).text("Like");
+
+
+        }
+    });
+}
 $('body').delegate('#d-ppppp','click',function(){
     var c = $(this).data('id');
     //alert(c);
@@ -124,4 +139,44 @@ function e_p(a)
             $("#p-id-d-c").val(a);
         });
     }).modal('show');
+}
+
+function viewMore()
+{
+    alert("view more");
+}
+
+function getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+function isFile() {
+    var ext = getExtension($('#id-projectfile').val());
+    switch (ext.toLowerCase()) {
+        case 'pdf':
+        case 'doc':
+        case 'docx':
+        case 'ppt':
+        case 'pptx':
+            //etc
+            return true;
+    }
+    var dd = document.getElementById("error-file-n-p");
+    dd.className = dd.className + " has-warning";
+    return false;
+}
+
+
+function search(){
+
+    $.ajax({
+        async : true,
+        url :" /home/search?s="+$("#navbar-search-input").val() ,
+        method : "GET",
+        success : function(data){
+        $("#a-p-s-d").html(data);
+        }
+    });
+
+
 }

@@ -42,4 +42,9 @@ class User
     {
         DB::select("Update Login set password=? where user_id=?",array(md5($new),$id));
     }
+
+    public static function getAllUser()
+    {
+        return DB::select("select * from USER ");
+    }
 }

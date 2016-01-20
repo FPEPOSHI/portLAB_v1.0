@@ -14,13 +14,13 @@ class Login
     public static function checkLogin($usr, $pass)
     {
 
-        return DB::select("select user_id, role from Login where username=? and password=?", array($usr, $pass));
+        return DB::select("select user_id, role from Login where username=? and password=?", array($usr, md5($pass)));
     }
 
     public static function insertUser($name, $username, $pass, $photo, $email)
     {
-        DB::insert(' insert into Login(username, password, role) VALUES (?,?,?)', array($username, $pass, 2));
-        $id = DB::select('SELECT user_id from Login where username=? and password=? and role=2 ',array($username, $pass));
+        DB::insert(' insert into Login(username, password, role) VALUES (?,?,?)', array($username, md5($pass), 2));
+        $id = DB::select('SELECT user_id from Login where username=? and password=? and role=2 ',array($username, md5($pass)));
         DB::insert(' insert into User(name, email, photo, user_id) values(?,?,?,?)'
             , array($name, $email, $photo,$id[0]->user_id));
     }

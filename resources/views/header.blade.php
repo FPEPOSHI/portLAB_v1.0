@@ -21,11 +21,11 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                {{--<form class="navbar-form navbar-left" role="search">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<input type="text" class="form-control" id="navbar-search-input" placeholder="Search">--}}
-                    {{--</div>--}}
-                {{--</form>--}}
+                <div class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" onchange="search()" class="form-control" id="navbar-search-input" placeholder="Search">
+                    </div>
+                </div>
                 <!-- Messages: style can be found in dropdown.less-->
 
                 <!-- Notifications Menu -->
@@ -124,10 +124,10 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{!! asset('uploads/'.$details_header[0]->photo) !!}" class="img-circle" alt="User Image" />
+                            <img src="{!! asset('uploads/'.$details_header[0]->photo)!!}" class="img-circle" alt="User Image" />
                             <p>
-                                {!! $details_header[0]->name !!}
-                                <small>{!! $details_header[0]->email !!}</small>
+                                {!! $details_header[0]->name or "Admin" !!}
+                                <small>{!! $details_header[0]->email or "" !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->

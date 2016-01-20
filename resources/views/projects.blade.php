@@ -1,5 +1,5 @@
-
-        <ul class="users-list clearfix">
+<div id="a-p-s-d">
+        <ul class="users-list clearfix" >
             @foreach($projects as $pro)
                 <div class="col-lg-4 col-xs-6" >
                     <!-- small box -->
@@ -18,12 +18,13 @@
                                 <p>{!! $pro->downloads !!}</p>
                                 <a href="{!! URL::route("download",array($pro->project_id)) !!}" style="text-decoration:none;color:white"><i id="d-ppp" data-id="{!! $pro->project_id !!}" class="fa fa-download"> Download</i></a>
                             </div>
+
                             <div class="col-sm-6">
                                 <p id="l-p-i{!! $pro->project_id !!}">{!! $pro->likes !!}</p>
                                 @if($pro->l_user)
                                 <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">Liked</i></div>
                                 @else
-                                <div id="like-p" data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">Like</i></div>
+                                <div id="like-p"  data-id="{!! $pro->project_id !!}"><i id="like-p-{!! $pro->project_id !!}"  class="fa fa-thumbs-o-up">Like</i></div>
                                 @endif
                             </div>
                             </div>
@@ -35,10 +36,11 @@
 
                 @endforeach
         </ul>
+    </div>
         <!-- /.users-list -->
     <!-- /.box-body -->
     <div class="box-footer text-center">
-        <a href="" class="uppercase">View more</a>
+        <a href="javascript:viewMore()" class="uppercase">View more</a>
     </div>
     <!-- /.box-footer -->
 

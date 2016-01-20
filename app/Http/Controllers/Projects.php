@@ -183,5 +183,14 @@ class Projects
         DB::select("Update Login set username=? where user_id=?",array($per,$id));
     }
 
-
+    public static function search($string){
+        return DB::select("select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads, p.likes , l.user_id as l_user, p.project_id
+                            from Project p
+                            inner join User u on u.user_id = p.user_id
+                            inner join Category c on c.category_id =p.category_id
+                            LEFT JOIN (Likes as l, Likes as l1)
+                            on (l.user_id = u.user_id and l1.project_id = p.project_id)
+                            where title like '%".$string."%' or c.name like '%".$string."%' or u.name like '%".$string."%'
+                            group by p.project_id");
+    }
 }
