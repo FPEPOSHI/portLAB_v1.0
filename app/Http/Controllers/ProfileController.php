@@ -163,6 +163,8 @@ class ProfileController extends Controller
     public function getProjectToUpdate()
     {
         $id = $_GET['i'];
+
+        Utils::setProjectID($id);
         $pro_details = Projects::getProjectbyId($id);
         $category = Projects::getAllCategory();
         $t ='<div class="row">
@@ -225,9 +227,10 @@ class ProfileController extends Controller
         return $t;
     }
 
-    public function deleteProject($id)
+    public function deleteProject()
     {
         Utils::isLogged();
+        $id = Utils::getProjectIdFromSession();
         Projects::getProjectdelete($id);
         Redirect::to("profile")->send();
 

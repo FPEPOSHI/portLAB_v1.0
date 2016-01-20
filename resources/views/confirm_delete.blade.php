@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                    <a href="{!! URL::route("delete-p", array(17)) !!}" class="btn btn-danger">OK</a>
+                    <a href="{!! URL::route("delete-p") !!}" class="btn btn-danger">OK</a>
                 </div>
                 <input type="hidden" value="" id="p-id-d-c"/>
 

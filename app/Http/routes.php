@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
+Route::get('/contact', array('as'=>'contact', 'uses'=>'LoginController@contact'));
 Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
 Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
@@ -33,7 +34,7 @@ Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileControlle
 Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
 Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
 Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
-Route::get("/profile/pro/delete/{id}", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
+Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::get("/profile/pro/delete/{id}", array("as"=>"delete-p", "uses"=>"ProfileC
 */
 Route::group(['middleware' => ['web']], function () {
     Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
+    Route::get('/contact', array('as'=>'contact', 'uses'=>'LoginController@contact'));
     Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
     Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
@@ -62,7 +64,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
     Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
     Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
-    Route::get("/profile/pro/delete/{id}", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
+    Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
 
 
 

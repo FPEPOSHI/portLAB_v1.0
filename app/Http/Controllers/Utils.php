@@ -52,4 +52,12 @@ class Utils
         Session::set('role',$role);
     }
 
+    public static function setProjectID($id)
+    {
+        Session::set('p_id_to_d',$id);
+    }
+    public static function getProjectIdFromSession()
+    {
+        return Session::get('p_id_to_d');
+    }
 }

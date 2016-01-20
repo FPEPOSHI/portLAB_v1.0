@@ -169,7 +169,7 @@ class Projects
     public static function addDownloads($id)
     {
         DB::select("update project set downloads = (downloads + 1) where project_id=?",array($id));
-        
+
     }
 
     public static function getUserIdForProject($id)

@@ -34,12 +34,12 @@
         <!-- Nav -->
         <nav id="nav">
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Kryefaqja</a></li>
 
 
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="{!! URL::route("login") !!}">Login</a></li>
+                <li><a href="#about">Rreth nesh</a></li>
+                <li><a href="#contact">Kontakto</a></li>
+                <li><a href="{!! URL::route("login") !!}">Hyr</a></li>
 
             </ul>
         </nav>
@@ -60,49 +60,49 @@
         <div class="reel">
 
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/bio.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/bio.jpg") !!}" alt="" width="150" height="150" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Hemorragjia Cerebrale -BIOLOGJI</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Hemorragjia Cerebrale -BIOLOGJI</a></h4>
                 </header>
                 <p>Objektivat: Te njihemi me semundjen cerebrale dhe simptomat e saj. ...</p>
             </article>
 
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/fiz.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/fiz.jpg") !!}" alt="" width="150" height="130" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Ligji i Dyte i Termodinamikes Kunder Evolucionit -FIZIKE</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Ligji i Dyte i Termodinamikes Kunder Evolucionit -FIZIKE</a></h4>
                 </header>
-                <p>Ligji i Dyte i Termodinamikes njihet ndryshe edhe si Ligji i Entropise. Teoria e evolucionit eshte zhvilluar duke e injoruar kete baze ...</p>
+                <p>Ligji i Dyte i Termodinamikes njihet ndryshe edhe si Ligji i ...</p>
             </article>
 
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/mat.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/mat.jpg") !!}" alt="" width="150" height="130" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Studim statistikor mbi moshen e duhanpiresve -MATEMATIKE</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Studim statistikor mbi duhanpirjen -MATEMATIKE</a></h4>
                 </header>
                 <p>Popullimi: Bashkesia e numrit te personave duhanpires qe jane ne ...</p>
             </article>
 
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/gjeo.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/gjeo.jpg") !!}" alt="100" width="" height="150" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Rajoni Jugor i Shqiperise -GJEOGRAFI</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Rajoni Jugor i Shqiperise -GJEOGRAFI</a></h4>
                 </header>
                 <p>Rajoni Jugor gjendet ne jug te vendit dhe ka daLje te gjere ne detin e ngrohte te Jonit ...</p>
             </article>
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/psiko.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/psiko.jpg") !!}" alt="" width="150" height="150" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Crregullimet e Ankthit -PSIKOLOGJI</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Crregullimet e Ankthit -PSIKOLOGJI</a></h4>
                 </header>
                 <p>Crregullimet e ankthit percaktohet nga nje frike e paqarte , e zgjatur por e madhe, qe nuk lidhet ...</p>
             </article>
             <article>
-                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/his.jpg") !!}" alt="" /></a>
+                <a href="{!! URL::route("login") !!}" class="image featured"><img src="{!! asset("welcome/his.jpg") !!}" alt="" width="150" height="130" /></a>
                 <header>
-                    <h3><a href="{!! URL::route("login") !!}">Ndikimi I Revolucionit Industrial ne vendet e Evropes-HISTORI</a></h3>
+                    <h4><a href="{!! URL::route("login") !!}">Ndikimi I Revolucionit Industrial ne Evrope-HISTORI</a></h4>
                 </header>
-                <p>Revolucioni Industrial ishte tranzicioni drejt proceseve te reja prodhuese ne periudhEn nga 1760 ne lidhje me ...</p>
+                <p>Revolucioni Industrial ishte tranzicioni drejt proceseve te reja prodhuese ne periudhen nga ...</p>
             </article>
 
         </div>
