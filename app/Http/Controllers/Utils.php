@@ -64,6 +64,15 @@ class Utils
     {
         return Session::get('superuser') && (Session::get('role') == 1);
     }
+    public static function setProjectID($p_id)
+    {
+        Session::set('project_id_profile_u',$p_id);
+
+    }
+    public static function getProjectID()
+    {
+        return Session::get('project_id_profile_u');
+    }
 
 
 }
