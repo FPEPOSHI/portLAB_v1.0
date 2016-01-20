@@ -11,11 +11,11 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <div class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-                    </div>
-                </div>
+                {{--<div class="navbar-form navbar-left" role="search">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<input type="text" class="form-control" id="navbar-search-input" placeholder="Search">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
