@@ -39,8 +39,7 @@ class LoginController extends Controller
             $res = Login::checkLogin($username, $pass);
             if(!empty($res)) {
                 Utils::setSuperUser();
-                print_r("rewss");
-//                Redirect::to('home')->send();
+                Redirect::to('home')->send();
             }else {
                 Redirect::to('login')->send();
                 return;
