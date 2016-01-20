@@ -22,7 +22,7 @@ $('body').delegate('#like-p','click',function(){
     });
 });
 
-function like(c)
+function likePro(c)
 {
     var url = "/home/project/like/" + c;
     $.get(url, null, function (data) {
