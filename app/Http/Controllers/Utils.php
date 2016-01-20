@@ -37,6 +37,7 @@ class Utils
 
         Session::forget("user_id");
         Session::forget("role");
+        Session::forget("project_id_profile_u");
         Session::flush();
         Redirect::to('login')->send();
     }
@@ -52,12 +53,28 @@ class Utils
         Session::set('role',$role);
     }
 
-    public static function setProjectID($id)
+
+
+    public static function setSuperUser()
     {
-        Session::set('p_id_to_d',$id);
+        Session::set('superuser',1);
+        Session::set('role',1);
+
     }
-    public static function getProjectIdFromSession()
+    public static function getSuperUser()
     {
-        return Session::get('p_id_to_d');
+        return Session::has('superuser');
+//        return true;
     }
+    public static function setProjectID($p_id)
+    {
+        Session::set('project_id_profile_u',$p_id);
+
+    }
+    public static function getProjectID()
+    {
+        return Session::get('project_id_profile_u');
+    }
+
+
 }
