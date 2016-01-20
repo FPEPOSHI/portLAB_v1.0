@@ -229,6 +229,8 @@ class HomeController extends Controller
     {
         $s = $_GET["s"];
         $search = Projects::search($s);
+
+        
         $t = ' <ul class="users-list clearfix">';
         foreach ($search as $pro) {
             $t .= ' <div class="col-lg-4 col-xs-6" >
