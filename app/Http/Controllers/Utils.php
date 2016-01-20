@@ -38,6 +38,7 @@ class Utils
         Session::forget("user_id");
         Session::forget("role");
         Session::forget("project_id_profile_u");
+        Session::forget("superuser");
         Session::flush();
         Redirect::to('login')->send();
     }
