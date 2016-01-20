@@ -20,6 +20,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ asset("dist/css/skins/skin-purple.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("css/custom.css")}}" rel="stylesheet" type="text/css" />
 
+    <link href="{{ asset("css/dataTables.bootstrap.css")}}" rel="stylesheet" type="text/css" />
+
+
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -29,21 +32,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition skin-purple layout-top-nav">
 <div class="wrapper">
 
-    @include('header')
+    @include('header_admin')
     <div class="content-wrapper">
         <section class="content-header">
-            {{--@include('sub_header')--}}
+           {{--@include('sub_header')--}}
         </section>
         <div class="row">
+            {{--<div class="col-lg-2">--}}
+                {{--menu--}}
+            {{--</div>--}}
             <div class="col-lg-12">
-                <section class="content">
-                    @yield('content')
-                </section><!-- /.content -->
-            </div>
-        </div>
+                    <section class="content">
+                        @yield('content')
+                    </section><!-- /.content -->
+                </div>
+
     </div><!-- /.content-wrapper -->
 </div>
-        <!-- REQUIRED JS SCRIPTS -->
+</div>
+<!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.3 -->
 <script src="{{ asset ("jQuery/jQuery-2.1.4.min.js") }}"></script>
@@ -53,6 +60,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset ("dist/js/app.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("js/custom.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("js/custom2.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("js/ajax.js") }}" type="text/javascript"></script>
+
+    <script src="{{ asset ("jQuery/dataTables.bootstrap.min.js") }}"></script>
+    <script src="{{ asset ("jQuery/jquery.dataTables.min.js") }}"></script>
+    <script src="{{ asset ("jQuery/jquery.slimscroll.min.js") }}"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
 </body>
 </html>

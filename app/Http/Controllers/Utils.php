@@ -63,7 +63,8 @@ class Utils
     }
     public static function getSuperUser()
     {
-        return Session::get('superuser') && (Session::get('role') == 1);
+        return Session::has('superuser');
+//        return true;
     }
     public static function setProjectID($p_id)
     {

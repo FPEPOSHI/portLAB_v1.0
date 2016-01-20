@@ -9,7 +9,6 @@ $('body').delegate('#v_c_project','click',function(){
 $('body').delegate('#like-p','click',function(){
     var c = $(this).data('id');
     var url = "/home/project/like/" + c;
-
     $.get(url, null, function (data) {
         if (data != -1) {
             $("#l-p-i"+c).text(data);
@@ -22,6 +21,22 @@ $('body').delegate('#like-p','click',function(){
         }
     });
 });
+
+function like(c)
+{
+    var url = "/home/project/like/" + c;
+    $.get(url, null, function (data) {
+        if (data != -1) {
+            $("#l-p-i"+c).text(data);
+            if($("#like-p-"+c).text() === "Like" || $("#like-p-"+c).text() == "Like")
+                $("#like-p-"+c).text("Liked");
+            else
+                $("#like-p-"+c).text("Like");
+
+
+        }
+    });
+}
 $('body').delegate('#d-ppppp','click',function(){
     var c = $(this).data('id');
     //alert(c);
