@@ -229,7 +229,8 @@ class ProfileController extends Controller
     public function deleteProject($id)
     {
         Utils::isLogged();
-        Projects::getProjectdelete($id);
+
+        Projects::getProjectdelete(Utils::getProjectID());
         Redirect::to("profile")->send();
 
     }
