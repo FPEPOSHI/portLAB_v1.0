@@ -236,12 +236,13 @@ class HomeController extends Controller
                             </div>';
             $t .= '<div class="col-sm-6">
                                 <p id="l-p-i'. $pro->project_id.' ">' . $pro->likes . '</p>';
-            if ($pro->l_user)
-                $t .= ' <div id="like-p" onclick="like('.$pro->project_id .')"  data-id=" ' . $pro->project_id . ' "><i id="  like-p-' . $pro->project_id . '"  class="fa fa-thumbs-o-up">Liked</i></div>';
-            else
-                $t .= ' <div id="like-p" onclick="like('.$pro->project_id .')" data-id=" ' . $pro->project_id . '"><i id="like-p- ' . $pro->project_id . ' "  class="fa fa-thumbs-o-up">Like</i></div>
+            if ($pro->l_user) {
+                $t .= ' <div id="like-p" onclick="like(' . $pro->project_id . ')"  data-id="' . $pro->project_id . '"><i id="like-p-' . $pro->project_id . '"  class="fa fa-thumbs-o-up">Liked</i></div>';
+            }else {
+                $t .= ' <div id="like-p" onclick="like(' . $pro->project_id . ')" data-id="' . $pro->project_id . '"><i id="like-p-' . $pro->project_id . '"  class="fa fa-thumbs-o-up">Like</i></div>';
+            }
 
-                            </div>
+                           $t .= '</div>
                             </div>
                         </div>
                     </div>
