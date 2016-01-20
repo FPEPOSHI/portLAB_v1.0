@@ -32,7 +32,9 @@
             </div>
     </div>
     <div class="col-md-7">
+        <div id="usr-content-o-u">
 
+        </div>
     </div>
     </div>
 
