@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
     Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
 
+    
 
 
 

@@ -6,5 +6,5 @@ function viewUser(a)
 {
     var i = $("#user-row-a-"+a).attr("data-id");
     alert(i);
-    
+
 }

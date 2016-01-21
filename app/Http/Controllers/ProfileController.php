@@ -164,6 +164,7 @@ class ProfileController extends Controller
     {
         $id = $_GET['i'];
 
+
         Utils::setProjectID($id);
         $pro_details = Projects::getProjectbyId($id);
         $category = Projects::getAllCategory();
