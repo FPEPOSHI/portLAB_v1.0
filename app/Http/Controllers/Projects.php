@@ -193,4 +193,23 @@ class Projects
                             where title like '%".$string."%' or c.name like '%".$string."%' or u.name like '%".$string."%'
                             group by p.project_id");
     }
+
+    public static function getAllProjectsById($id)
+    {
+        return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads as p_down, p.likes, l.user_id as l_user, p.project_id
+                            from Project p
+                            inner join User u on u.user_id = p.user_id
+                            inner join Category c on c.category_id =p.category_id
+                            left JOIN Likes as l
+                            on (l.user_id = u.user_id and l.project_id = p.project_id)
+                             where p.user_id=? group by p.project_id order by p.upload_date DESC  LIMIT 20',array($id));
+
+    }
+
+    public static function deleteProjectById($id){
+        DB::select("Delete  from project where project_id=?", array($id));
+
+    }
+
+
 }

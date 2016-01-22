@@ -18,61 +18,59 @@ class ProfileController extends Controller
         Utils::isLogged();
         $id = Utils::getUserID();
         $user = User::getUser($id);
-        return $this->getView($id,$user,$user);
+        return $this->getView($id, $user, $user);
     }
 
     public function  getProjectById($id)
     {
         Utils::isLogged();
         $id_h = Utils::getUserID();
-        if(empty(Projects::checkUserProject($id_h, $id)))
-        {
+        if (empty(Projects::checkUserProject($id_h, $id))) {
             $user_h = User::getUser($id_h);
             $pro = Projects::getProjectsProfile($id_h);
             return View::make("error404")
-                ->with('details_header',$user_h)
-                ->with('projects',$pro)
-                ;
+                ->with('details_header', $user_h)
+                ->with('projects', $pro);
         }
         $user_h = User::getUser($id_h);
         $th = Projects::getProjectbyId($id);
         $category = Projects::getAllCategory();
         $pro = Projects::getProjectsProfile($id_h);
         return View::make("edit")
-            ->with('details_header',$user_h)
-            ->with('projects',$pro)
-            ->with('pro_details',$th)
-            ->with('category',$category)
-            ;
+            ->with('details_header', $user_h)
+            ->with('projects', $pro)
+            ->with('pro_details', $th)
+            ->with('category', $category);
 
     }
-    public function edit($id){
+
+    public function edit($id)
+    {
         Utils::isLogged();
         $id_h = Utils::getUserID();
-        $res = Projects::checkUserProject($id_h,$id);
-        if(empty($res))
-        {
+        $res = Projects::checkUserProject($id_h, $id);
+        if (empty($res)) {
             $user_h = User::getUser($id_h);
             $pro = Projects::getProjectsProfile($id_h);
             return View::make("error404")
-                ->with('details_header',$user_h)
-                ->with('projects',$pro)
-                ;
+                ->with('details_header', $user_h)
+                ->with('projects', $pro);
         }
         $t1 = Input::get("pro-title-e");
         $d1 = Input::get("description1");
         $c1 = Input::get("category1");
-        Projects::getProjectedit($t1,$d1,$c1,$id);
+        Projects::getProjectedit($t1, $d1, $c1, $id);
         Redirect::to('profile')->send();
     }
 
-    public function editSettings(){
+    public function editSettings()
+    {
         $id = Utils::getUserID();
         $em = Input::get("emer");
         $emm = Input::get("email");
         $per = Input::get("username");
 
-        if(Input::file('foto')) {
+        if (Input::file('foto')) {
             $file = array('image' => Input::file('foto'));
             // setting up rules
             $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
@@ -93,7 +91,7 @@ class ProfileController extends Controller
             }
 
             Projects::getProjectsettings($em, $emm, $fileName, $per, $id);
-        }else{
+        } else {
             Projects::getProjectsettingsNoPhoto($em, $emm, $per, $id);
 
         }
@@ -107,9 +105,8 @@ class ProfileController extends Controller
         $old = $_GET['f'];
         $id = Utils::getUserID();
         $res = User::checkPassword($id, $old);
-        if(!empty($res))
-        {
-             User::newPassword($id, $new);
+        if (!empty($res)) {
+            User::newPassword($id, $new);
             //bej update ketu
             return 1;
         }
@@ -120,43 +117,40 @@ class ProfileController extends Controller
     {
         Utils::isLogged();
         $id = User::getUserIDByName($usr);
-        if($id === -1)
-        {
-                Utils::isLogged();
-                $id_h = Utils::getUserID();
-                $user_h = User::getUser($id_h);
-                $pro = Projects::getProjectsProfile($id_h);
-                return View::make("error404")
-                    ->with('details_header',$user_h)
-                    ->with('projects',$pro)
-                    ;
+        if ($id === -1) {
+            Utils::isLogged();
+            $id_h = Utils::getUserID();
+            $user_h = User::getUser($id_h);
+            $pro = Projects::getProjectsProfile($id_h);
+            return View::make("error404")
+                ->with('details_header', $user_h)
+                ->with('projects', $pro);
         }
         $id_h = Utils::getUserID();
-        if($id == $id_h)
+        if ($id == $id_h)
             return $this->index();
         $user = User::getUser($id);
         $user_h = User::getUser($id_h);
-        return $this->getView($id,$user,$user_h);
+        return $this->getView($id, $user, $user_h);
     }
 
-    public function getView($id,$user, $user_h)
+    public function getView($id, $user, $user_h)
     {
         $pro = Projects::getProjectsProfile($id);
         $down = Projects::countDownloadsUser($id);
         $like = Projects::countLikesUser($id);
         return View::make("profile")
-            ->with('details_header',$user_h)
-            ->with('details',$user)
-            ->with('projects',$pro)
-            ->with('usr_down',$down)
-            ->with('usr_like',$like)
-            ->with('n_pro',count($pro))
-            ;
+            ->with('details_header', $user_h)
+            ->with('details', $user)
+            ->with('projects', $pro)
+            ->with('usr_down', $down)
+            ->with('usr_like', $like)
+            ->with('n_pro', count($pro));
     }
 
     public function editPass()
     {
-       // return 1;
+        // return 1;
         print_r(Input::get('pass1'));
     }
 
@@ -168,14 +162,14 @@ class ProfileController extends Controller
         Utils::setProjectID($id);
         $pro_details = Projects::getProjectbyId($id);
         $category = Projects::getAllCategory();
-        $t ='<div class="row">
+        $t = '<div class="row">
         <div class="col-md-12">';
-        $t .=Form::open(array('class'=> 'form-horizontal','autocomplete' => 'off', 'id' => 'editProjectForm','role' => 'form',  'route'=> array('edit', $pro_details[0]->project_id)));
+        $t .= Form::open(array('class' => 'form-horizontal', 'autocomplete' => 'off', 'id' => 'editProjectForm', 'role' => 'form', 'route' => array('edit', $pro_details[0]->project_id)));
 
-          $t .='<div class="form-group">
+        $t .= '<div class="form-group">
                 <label for="title" class="col-sm-2 control-label">Title</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" value="'. $pro_details[0]->title.'"
+                    <input type="text" class="form-control" value="' . $pro_details[0]->title . '"
                            name="pro-title-e" placeholder="Title"/>
                 </div>
             </div>
@@ -183,7 +177,7 @@ class ProfileController extends Controller
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
                     <textarea rows="5" class="form-control"
-                           name="description1" placeholder="Description">'. $pro_details[0]->description.'</textarea>
+                           name="description1" placeholder="Description">' . $pro_details[0]->description . '</textarea>
                 </div>
             </div>
 
@@ -192,16 +186,15 @@ class ProfileController extends Controller
                        for="Category" >Category</label>
                 <div class="col-sm-10">
                     <select  name="category1" class="form-control">';
-    foreach($category as $cat) {
-        if($pro_details[0]->category_id == $cat->category_id) {
-            $t .= '<option selected value="'. $cat->category_id .'"> '. $cat->name.' </option>';
-        }
-        else {
-            $t .= '<option value="'. $cat->category_id.'">'.$cat->name.' </option>';
+        foreach ($category as $cat) {
+            if ($pro_details[0]->category_id == $cat->category_id) {
+                $t .= '<option selected value="' . $cat->category_id . '"> ' . $cat->name . ' </option>';
+            } else {
+                $t .= '<option value="' . $cat->category_id . '">' . $cat->name . ' </option>';
             }
 
         }
-          $t.= '</select>
+        $t .= '</select>
                 </div>
 
             </div>
@@ -212,7 +205,7 @@ class ProfileController extends Controller
 
                 </div>
                 <div class="col-sm-10">
-                    <input type="button" onclick="d_p_u('.$pro_details[0]->project_id.')" id="delete" value="Delete" class="btn btn-m btn-danger pull-left" >
+                    <input type="button" onclick="d_p_u(' . $pro_details[0]->project_id . ')" id="delete" value="Delete" class="btn btn-m btn-danger pull-left" >
 
                     </input>
                     <button type="submit" id="update" class="btn btn-primary pull-right" >
@@ -221,19 +214,12 @@ class ProfileController extends Controller
                 </div>
             </div>
             </div>';
-            $t .=Form::close();
+        $t .= Form::close();
 
-    $t .='</div>
+        $t .= '</div>
     </div>';
         return $t;
     }
 
-    public function deleteProject()
-    {
-        Utils::isLogged();
-        $id = Utils::getProjectID();
-        Projects::getProjectdelete($id);
-        Redirect::to("profile")->send();
 
-    }
 }
