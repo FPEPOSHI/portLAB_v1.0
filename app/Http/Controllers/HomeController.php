@@ -11,6 +11,7 @@ use View;
 use Redirect;
 use Illuminate\Support\Facades\Input;
 use URL;
+use DB;
 class HomeController extends Controller
 {
     public function index()
@@ -33,6 +34,8 @@ class HomeController extends Controller
         return View::make('admin')
             ;
     }
+
+
 
     public  function returnView($projects, $map, $cat_name)
     {
@@ -67,6 +70,31 @@ class HomeController extends Controller
         $cat_id = Projects::getCategoryID($cat);
         $projects = Projects::getAllProjectsByCategory($cat_id);
         return $this->returnView($projects,2, $cat);
+    }
+
+    public function paySuccess()
+    {
+        try {
+            if (!$_GET["i"]) {
+                Redirect::to('home')->send();
+            } else {
+                $c_date = date('Y-m-d H:i:s');
+                $e_date = date('Y-m-d H:i:s', strtotime("2047-01-20 09:51:40"));
+                DB::select("insert into Premium( start_date, end_date, user_id) values(?,?,?)"
+                    , array($c_date, $e_date, Utils::getUserID()));
+                Redirect::to('home')->send();
+            }
+        }catch (\Exception $e)
+        {
+            Redirect::to('home')->send();
+        }
+
+
+    }
+
+    public function payError()
+    {
+        Redirect::to('home')->send();
     }
 
 

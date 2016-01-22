@@ -55,7 +55,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @include('edit_pass')
 @include('edit_settings')
-<!-- REQUIRED JS SCRIPTS -->
+@include('pay')
+        <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.3 -->
 <script src="{{ asset ("jQuery/jQuery-2.1.4.min.js") }}"></script>

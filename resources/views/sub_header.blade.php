@@ -12,9 +12,9 @@
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myproject">
                 New project
             </button>
-            @if($premium == 0)<button type="button" class="btn btn-danger  btn-lg  ">Premium</button>@endif
+            @if($premium == 0)<button type="button"  data-toggle="modal" data-target="#pay" class="btn btn-danger btn-lg">Premium</button>
+            @endif
         </div>
     </div>
  </div>
-
 @include('newproject')

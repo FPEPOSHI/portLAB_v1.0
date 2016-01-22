@@ -12,7 +12,6 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel"> Password </h4>
                 </div>
-
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p>Would you like to delete this project ?</p>

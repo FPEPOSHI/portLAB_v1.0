@@ -38,6 +38,8 @@ Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileContro
 Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
 Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
 Route::get("/home/b", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
+Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
+Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -70,9 +72,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
     Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
     Route::get("/home/b", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
+    Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
+    Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
 
 
-    
+
 
 
 
