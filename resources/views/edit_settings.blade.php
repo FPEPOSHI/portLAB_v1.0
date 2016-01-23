@@ -20,7 +20,8 @@
             <!-- Modal Body -->
             <div class="modal-body">
 
-                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'edit_settings','role' => 'form', 'route'=> 'edit_us')) !!}
+                {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'edit_settings','role' => 'form'
+                , 'route'=> 'edit_us','onSubmit' => 'return checkU()')) !!}
 
                 <div class="form-group">
                     <label for="exampleTitle" class="col-sm-2 control-label">Emri</label>
@@ -43,11 +44,11 @@
                                name="foto" placeholder="Foto"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="e-usr-mod-a">
                     <label for="exampleDescription" class="col-sm-2 control-label">Perdorues</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" value="{!! $details_header[0]->username !!}"
-                               name="username" placeholder="Username"/>
+                               id="u-e-s-mod-a" name="username" placeholder="Username"/>
                     </div>
                 </div>
                 <div class="modal-footer">

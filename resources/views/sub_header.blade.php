@@ -17,4 +17,9 @@
         </div>
     </div>
  </div>
+<div class="row">
+    <div class="col-md-9">
+        @if($success)flkdfdjkls @endif
+    </div>
+</div>
 @include('newproject')

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Input;
 use Form;
 use Redirect;
 use Validator;
+use Illuminate\Support\Facades\Session;
+
 class ProfileController extends Controller
 {
     public function index()
@@ -108,6 +110,21 @@ class ProfileController extends Controller
         if (!empty($res)) {
             User::newPassword($id, $new);
             //bej update ketu
+            return 1;
+        }
+        return 0;
+    }
+
+    public function checkUsername()
+    {
+        $usr = $_GET['f'];
+        $id = Utils::getUserID();
+        if(Session::has("user_id")) {
+            $res = User::checkUsername($usr, $id);
+        }else{
+            $res = User::checkUsername($usr, -1);
+        }
+        if (empty($res)) {
             return 1;
         }
         return 0;
@@ -221,5 +238,12 @@ class ProfileController extends Controller
         return $t;
     }
 
+    public function deleteProject()
+    {
+        Utils::isLogged();
+        $id = Utils::getProjectID();
+        Projects::getProjectdelete($id);
+        Redirect::to("profile")->send();
 
+    }
 }

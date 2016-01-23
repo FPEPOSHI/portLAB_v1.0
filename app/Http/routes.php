@@ -28,16 +28,18 @@ Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeContro
 Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
 Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
 Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
+Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@download"));
 Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 //Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
 Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
 Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
 Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
+Route::get("/profile/ch/U", array("as"=>"edit_pc", "uses"=>"ProfileController@checkUsername"));
 Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
 Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
 Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
 Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
-Route::get("/home/b", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
+Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
 Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
 Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
 /*
@@ -62,16 +64,18 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
     Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
     Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
+    Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@download"));
     Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 //    Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
     Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
     Route::post("/profile/editus", array("as"=>"edit_us", "uses"=>"ProfileController@editSettings"));
     Route::get("/profile/ch/P", array("as"=>"edit_pc", "uses"=>"ProfileController@checkPassword"));
+    Route::get("/profile/ch/U", array("as"=>"edit_pc", "uses"=>"ProfileController@checkUsername"));
     Route::get("/profile/pro/update", array("as"=>"edit_proj", "uses"=>"ProfileController@getProjectToUpdate"));
     Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
     Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
     Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
-    Route::get("/home/b", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
+    Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
     Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
     Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
 

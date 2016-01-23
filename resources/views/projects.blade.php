@@ -16,7 +16,7 @@
                             <div class="row">
                             <div class="col-sm-6">
                                 <p>{!! $pro->downloads !!}</p>
-                                <a href="{!! URL::route("download",array($pro->project_id)) !!}" style="text-decoration:none;color:white"><i id="d-ppp" data-id="{!! $pro->project_id !!}" class="fa fa-download"> Download</i></a>
+                                <a href="javascript: downPro({!! $pro->project_id !!})" style="text-decoration:none;color:white"><i id="d-ppp" data-id="{!! $pro->project_id !!}" class="fa fa-download"> Download</i></a>
                             </div>
 
                             <div class="col-sm-6">

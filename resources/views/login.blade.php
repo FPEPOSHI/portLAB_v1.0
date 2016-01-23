@@ -6,6 +6,7 @@
     <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{!! asset('js/bootstrap.min.js')!!}"></script>
+    <script src="{!! asset('js/custom.js')!!}"></script>
 
     <script type="text/javascript">
         function test()
@@ -93,7 +94,8 @@
                                 <a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Hyr</a></div>
                         </div>  
                         <div class="panel-body" >
-                            {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'signupform','role' => 'form', 'route'=> 'log_user')) !!}
+                            {!! Form::open(array('class'=> 'form-horizontal',"autocomplete" => "off","enctype"=>"multipart/form-data", 'id' => 'signupform','role' => 'form'
+                            , 'route'=> 'log_user', 'onsubmit'=>'return checkUL()')) !!}
 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -117,10 +119,10 @@
                                         <input type="file"  class="form-control" name="register_photo" placeholder="foto">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="r-usr-n-m">
                                     <label for="register_usr" class="col-md-3 control-label">Perdorues</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="register_usr"  required="required" placeholder=" emri i perdoruesit">
+                                        <input type="text" id="r-usr-n-m-i" class="form-control" name="register_usr"  required="required" placeholder=" emri i perdoruesit">
                                     </div>
                                 </div>
                                 <div class="form-group">

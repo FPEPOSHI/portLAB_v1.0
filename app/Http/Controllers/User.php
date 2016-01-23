@@ -47,4 +47,9 @@ class User
     {
         return DB::select("select * from USER ");
     }
+
+    public static function checkUsername($usr, $id)
+    {
+        return DB::select("select username from Login where username=? and user_id<>?",array($usr,$id));
+    }
 }

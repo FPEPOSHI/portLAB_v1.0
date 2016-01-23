@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use URL;
+use Redirect;
 
 class AdminController extends Controller
 {
@@ -45,12 +47,12 @@ class AdminController extends Controller
                         </thead>
                         <tbody>';
         for ($i = 0; $i < count($project); $i++){
-            $t .= '<tr id="user-row-a-{!! $i !!}" data-id="{!! $users[$i]->user_id !!}" )">
+            $t .= '<tr data-id="{!! $users[$i]->user_id !!}" )">
                                 <td>'.$project[$i]->p_name.'</td>
                                 <td>'.$project[$i]->c_name.'</td>
                                 <td>'.$project[$i]->l_user.'</td>
                                 <td>'.$project[$i]->p_down.'</td>
-                                <td><button type="submit" id ="delete" class="glyphicon glyphicon-trash"></td>
+                                <td><a href="'.URL::route('admindelete', array($project[$i]->project_id)).'"type="submit" id ="delete" class="btn btn-danger">Delete</td>
                             </tr>';
     }
 
@@ -67,8 +69,8 @@ class AdminController extends Controller
     public function deleteProjectB($id)
     {
 
-        Projects::getProjectdeleteById($id);
-        Redirect::to("profile")->send();
+        Projects::deleteProjectById($id);
+        Redirect::to("home")->send();
 
     }
 

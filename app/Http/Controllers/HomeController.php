@@ -60,6 +60,7 @@ class HomeController extends Controller
             ->with("total_projects", $projects_number)
             ->with("map", $map)
             ->with("premium", $premium)
+            ->with("success", Input::get('success'))
             ;
 
     }
@@ -82,7 +83,7 @@ class HomeController extends Controller
                 $e_date = date('Y-m-d H:i:s', strtotime("2047-01-20 09:51:40"));
                 DB::select("insert into Premium( start_date, end_date, user_id) values(?,?,?)"
                     , array($c_date, $e_date, Utils::getUserID()));
-                Redirect::to('home')->send();
+                Redirect::to('home')->with("success")->send();
             }
         }catch (\Exception $e)
         {
@@ -94,7 +95,7 @@ class HomeController extends Controller
 
     public function payError()
     {
-        Redirect::to('home')->send();
+        Redirect::route('home')->with("success")->send();
     }
 
 

@@ -114,6 +114,56 @@ function vPC()
     return r;
 }
 
+function aaa(a,b,c)
+{
+    return false;
+}
+
+function checkU()
+{
+    var r = false;
+    $.ajax({
+        async : false,
+        url: "/profile/ch/U?f="+$("#u-e-s-mod-a").val(),
+        method: "GET",
+        success: function(data){
+            if(data == 1)
+            {
+                    r = true;
+            }else{
+                var dd = document.getElementById('e-usr-mod-a');
+                dd.className = dd.className + " has-warning";
+            }
+        }
+
+    });
+    return r;
+}
+function downPro(a)
+{
+    alert(a);
+}
+function checkUL()
+{
+    var r = false;
+    $.ajax({
+        async : false,
+        url: "/profile/ch/U?f="+$("#r-usr-n-m-i").val(),
+        method: "GET",
+        success: function(data){
+            if(data == 1)
+            {
+                r = true;
+            }else{
+                var dd = document.getElementById("r-usr-n-m");
+                dd.className = dd.className + " has-warning";
+            }
+        }
+
+    });
+    return r;
+}
+
 function d_p_u(a)
 {
     $('#d-project').modal({
@@ -177,6 +227,5 @@ function search(){
         $("#a-p-s-d").html(data);
         }
     });
-
-
 }
+
