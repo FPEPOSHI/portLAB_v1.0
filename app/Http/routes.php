@@ -76,7 +76,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/profile/pro/delete", array("as"=>"delete-p", "uses"=>"ProfileController@deleteProject"));
     Route::get("/home/search", array("as"=>"search", "uses"=>"HomeController@searchProject"));
     Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
-    Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
+    Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectA"));
     Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
     Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
     Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));

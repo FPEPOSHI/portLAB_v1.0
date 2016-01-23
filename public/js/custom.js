@@ -198,6 +198,7 @@ function d_p_u(a)
 
     }).modal('show');
 }
+
 function getID()
 {
     return $("#p-id-d-c").val();

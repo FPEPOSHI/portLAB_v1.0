@@ -52,7 +52,7 @@ class AdminController extends Controller
                                 <td>'.$project[$i]->c_name.'</td>
                                 <td>'.$project[$i]->l_user.'</td>
                                 <td>'.$project[$i]->p_down.'</td>
-                                <td><a href="'.URL::route('admindelete', array($project[$i]->project_id)).'"type="submit" id ="delete" class="btn btn-danger">Delete</td>
+                                <td><button type="submit" onclick="d_p(' . $project[$i]->project_id . ')" id ="delete"  class="btn btn-danger">Delete</td>
                             </tr>';
     }
 
@@ -66,13 +66,15 @@ class AdminController extends Controller
         return $t;
 
     }
-    public function deleteProjectB($id)
-    {
+    public function deleteProjectA()
 
-        Projects::deleteProjectById($id);
-        Redirect::to("home")->send();
+     {
+         Utils::isLogged();
+         $id = Utils::getProjectID();
+         Projects:: deleteProjectById($id);
+         Redirect::to("home")->send();
 
-    }
+     }
 
 }
 
