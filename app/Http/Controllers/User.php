@@ -60,6 +60,43 @@ class User
 
     public static function sendRequestToDownload($id1, $id2, $proj)
     {
-        DB::select("insert into Request(sender_id,reciever_id,project_id,status) VALUES(?,?,?,?)", array($id1,$id2,$proj,0));
+        DB::select("insert into Request(sender_id,reciever_id,project_id,status) VALUES(?,?,?,?)", array($id2,$id1,$proj,0));
+    }
+
+    public static function getNotification($id)
+    {
+        $res = User::getNotificationSender($id);
+        $res1 =  DB::select("select distinct(rr.request_id), s.name as s_name, r.user_id as r_id, r.name as r_name
+                    , p.title as p_name,rr.request_id as id, rr.status, p.project_id as p_id
+                    from Request rr
+                     inner join User s on s.user_id = rr.sender_id
+                     inner join User r on r.user_id = rr.reciever_id
+                     inner join Project p on p.project_id = rr.project_id
+                     where  rr.reciever_id=? and status=0",array($id));
+        return array_merge($res,$res1);
+    }
+    public static function getNotificationSender($id)
+    {
+        return DB::select("select distinct(rr.request_id), s.name as s_name, r.user_id as r_id, r.name as r_name
+                    , p.title as p_name,rr.request_id as id, rr.status, p.project_id as p_id
+                    from Request rr
+                     inner join User s on s.user_id = rr.sender_id
+                     inner join User r on r.user_id = rr.reciever_id
+                     inner join Project p on p.project_id = rr.project_id
+                     where  rr.sender_id=? and status=1",array($id));
+    }
+    public static function comfirmOrRejectRequest($id, $int)
+    {
+        DB::select("update Request set status=? where request_id=?",array($int,$id));
+    }
+
+    public static function cRequest($i,$sen)
+    {
+        DB::select("update Request set status=2 where project_id=? and sender_id=?",array($i,$sen));
+    }
+
+    public static function isRequested($id, $getUserID)
+    {
+        return DB::select('select * from Request where project_id=? and sender_id=? and status<>0',array($id,$getUserID));
     }
 }

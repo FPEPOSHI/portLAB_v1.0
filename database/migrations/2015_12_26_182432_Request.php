@@ -18,6 +18,7 @@ class Request extends Migration
             $table->integer('project_id')->unsigned();
             $table->integer('sender_id')->unsigned();
             $table->integer('reciever_id')->unsigned();
+            $table->integer('read')->default(0);
             $table->engine = 'InnoDB';
         });
 

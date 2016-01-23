@@ -22,6 +22,7 @@ Route::get('/contact', array('as'=>'contact', 'uses'=>'LoginController@contact')
 Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
 Route::get('/home/download/p', array('as'=>'download', 'uses'=>'HomeController@downloadP'));
+Route::get('/home/download/finally', array('as'=>'download_f', 'uses'=>'HomeController@downloadPFinally'));
 Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
 Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
@@ -44,6 +45,7 @@ Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeControll
 Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
 Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
 Route::get("/home/request/send", array("as"=>"send_r", "uses"=>"HomeController@sendRequest"));
+Route::get("/home/request/confirm", array("as"=>"confirm_r", "uses"=>"HomeController@confirmRequest"));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -60,6 +62,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
     Route::get('/home/download/p', array('as'=>'download', 'uses'=>'HomeController@downloadP'));
+    Route::get('/home/download/finally', array('as'=>'download_f', 'uses'=>'HomeController@downloadPFinally'));
     Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
     Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
     Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
@@ -82,7 +85,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
     Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
     Route::get("/home/request/send", array("as"=>"send_r", "uses"=>"HomeController@sendRequest"));
-
+    Route::get("/home/request/confirm", array("as"=>"confirm_r", "uses"=>"HomeController@confirmRequest"));
 
 
 

@@ -266,7 +266,61 @@ function search(){
         }
     });
 }
+function d_confirmed_p(p)
+{
+    BootstrapDialog.show({
+        title: 'Confirmation!',
+        message: 'Would you like to download ?',
+        buttons: [{
+            label: 'No now',
+            cssClass: 'btn-danger',
+            action: function(dialog) {
+                dialog.close();
+            }
+        }, {
+            label: 'Yes',
+            cssClass: 'btn-primary',
+            action: function(dialog) {
+                window.location.href = '/home/download/finally?p='+p+"&i=1";
+                dialog.close();
+            }
+        }]
+    });
+}
+function confirm_request(p)
+{
 
+    BootstrapDialog.show({
+        title: 'Request',
+        message: 'Would you like to confirm this?',
+        buttons: [{
+            label: 'Reject',
+            cssClass: 'btn-danger',
+            action: function(dialog) {
+                $.ajax({
+                    async:true,
+                    method: "GET",
+                    url: '/home/request/confirm?i='+p+"$j=0",
+                    success: function(data){
+                        dialog.close();
+                    }
+                });
+            }
+        }, {
+            label: 'Confirm',
+            action: function(dialog) {
+                $.ajax({
+                    async:true,
+                    method: "GET",
+                    url: '/home/request/confirm?i='+p+"&j=1",
+                    success: function(data){
+                        dialog.close();
+                    }
+                });
+            }
+        }]
+    });
+}
 function d_p_a_a()
 {
     var i =  $("#p-id-d-c-a").val();

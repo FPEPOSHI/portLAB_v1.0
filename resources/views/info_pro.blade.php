@@ -24,7 +24,7 @@
                             </button>
                             <button type="button"  data-toggle="modal" data-target="#pay" class="btn btn-danger">Premium</button>
                         </div>
-                        <button type="submit" id="send" class="btn btn-primary" >
+                        <button type="submit" data-dismiss="modal" id="send" class="btn btn-primary" >
                             Close
                         </button>
                     </div>

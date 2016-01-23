@@ -49,6 +49,7 @@ class HomeController extends Controller
         $latest_projects = Projects::getLatestProjects();
         $map = $this->getMapp($map, $cat_name);
         $premium = Projects::isPremium($id);
+        $notification = User::getNotification($id);
         return View::make('home')
             ->with('details_header',$user)
             ->with('total_users',$user_number)
@@ -60,6 +61,8 @@ class HomeController extends Controller
             ->with("total_projects", $projects_number)
             ->with("map", $map)
             ->with("premium", $premium)
+            ->with("notification", $notification)
+            ->with("user_id", $id)
             ->with("success", Input::get('success'))
             ;
 
@@ -220,10 +223,30 @@ class HomeController extends Controller
         }
     }
 
+    public function confirmRequest()
+    {
+        if (isset($_GET['i'])) {
+            $id = $_GET['i'];
+            $s = $_GET['j'];
+            if($s == 0)
+            {
+                User::comfirmOrRejectRequest($id,2);
+            }else{
+                User::comfirmOrRejectRequest($id,1);
+            }
+        }
+    }
     public function downloadP()
     {
         $id = $_GET['p'];
-      $this->downloadFinally($id);
+        $this->downloadFinally($id);
+
+    }
+    public function downloadPFinally()
+    {
+        $id = $_GET['p'];
+        User::cRequest($_GET['p'],Utils::getUserID());
+        $this->downloadFinally($id);
 
     }
     public function request()
@@ -262,6 +285,10 @@ class HomeController extends Controller
             if ($premium == 1) {
                 return '/home/download/p?p='.$_GET['p'];
 //                $this->downloadFinally($id);
+            }
+            $isrequested = User::isRequested($id,Utils::getUserID());
+            if(!empty($isrequested)){
+                return '/home/download/p?p='.$_GET['p'];
             }
             $sh = Projects::hasUserAnyProject($userId);
             if (empty($sh)) {

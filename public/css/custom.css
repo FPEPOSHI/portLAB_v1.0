@@ -36,3 +36,6 @@
 #after-request-p{
     color: green;
 }
+#notif-row{
+    cursor: default;
+}

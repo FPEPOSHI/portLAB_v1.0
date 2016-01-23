@@ -60,21 +60,34 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+                        <span class="label label-warning">{!! count($notification) !!}</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 requests</li>
+                        <li class="header">You have {!! count($notification) !!} requests</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li><!-- end notification -->
+                                @foreach($notification as $n)
+                                    @if($n->status == 0)
+                                        <li onclick="confirm_request({!! $n->id !!})">
+                                               <div id="notif-row" class="external-event bg-red">{!! $n->s_name !!} has request
+                                                        you to  download this project {!! $n->p_name !!}
+                                                </div>
+                                        </li>
+                                    @else
+                                        @if($n->r_id != $user_id)
+                                            <li onclick="d_confirmed_p({!! $n->p_id !!})"><!-- start notification -->
+                                                <div id="notif-row" class="external-event bg-green">
+                                                    {!! $n->r_name !!} has confirm </br> you to
+                                                    download this project {!! $n->p_name !!}
+                                                </div>
+                                            </li>
+                                            @endif
+                                    @endif
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">View all</a></li>
+                        {{--<li class="footer"><a href="#">View all</a></li>--}}
                     </ul>
                 </li>
                 <!-- Tasks Menu -->

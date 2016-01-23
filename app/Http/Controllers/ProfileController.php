@@ -156,8 +156,11 @@ class ProfileController extends Controller
         $pro = Projects::getProjectsProfile($id);
         $down = Projects::countDownloadsUser($id);
         $like = Projects::countLikesUser($id);
+        $notification = User::getNotification($id);
         return View::make("profile")
             ->with('details_header', $user_h)
+            ->with("notification", $notification)
+            ->with("user_id", $id)
             ->with('details', $user)
             ->with('projects', $pro)
             ->with('usr_down', $down)
