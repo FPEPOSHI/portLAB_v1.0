@@ -22,4 +22,3 @@
         @if($success)flkdfdjkls @endif
     </div>
 </div>
-@include('newproject')
