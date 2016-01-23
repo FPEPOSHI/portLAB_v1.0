@@ -66,6 +66,7 @@ class AdminController extends Controller
         return $t;
 
     }
+
     public function deleteProjectA()
 
      {
@@ -77,4 +78,7 @@ class AdminController extends Controller
      }
 
 }
+
+
+
 

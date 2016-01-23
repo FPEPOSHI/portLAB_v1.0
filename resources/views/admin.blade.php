@@ -1,4 +1,5 @@
 @extends('layout.adm')
+{{--@include('confirm_deleteAdmin')--}}
 @section('content')
     <div class="row">
         <div class="col-md-5">
