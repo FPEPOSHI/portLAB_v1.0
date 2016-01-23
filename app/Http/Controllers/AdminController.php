@@ -21,7 +21,7 @@ class AdminController extends Controller
             <div class="row">
             <div class="col-md-12">';
         if ($prem) {
-            $t .= ' <label><input type="checkbox" value="" disabled checked> premium</label> ';
+            $t .= ' <label><input type="checkbox" value="" disabled checked> Premium</label> ';
         } else {
             $t .= ' <label><input type="checkbox" value=""> Premium</label> ';
         }
@@ -68,10 +68,8 @@ class AdminController extends Controller
     }
 
     public function deleteProjectA()
-
      {
-         Utils::isLogged();
-         $id = Utils::getProjectID();
+         $id = $_GET['i'];
          Projects:: deleteProjectById($id);
          Redirect::to("home")->send();
 

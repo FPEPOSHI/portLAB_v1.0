@@ -31,7 +31,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition skin-purple layout-top-nav">
 <div class="wrapper">
-    @include('confirm_deleteAdmin')
     @include('header_admin')
     <div class="content-wrapper">
         <section class="content-header">
@@ -50,6 +49,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div><!-- /.content-wrapper -->
 </div>
 </div>
+
+@include('confirm_deleteAdmin')
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.3 -->

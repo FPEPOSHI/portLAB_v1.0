@@ -27,15 +27,6 @@ function d_p(a)
         backdrop: "static",
         show: "false",
     }).on('show.bs.modal', function(){
-
+            $("#p-id-d-c-a").val(a);
     }).modal('show');
-
-    $.ajax({
-    async:true,
-    method: "GET",
-    url: '/home/b?i='+i,
-    success:function(data){
-        $("#delete").html(data);
-    }
-});
 }

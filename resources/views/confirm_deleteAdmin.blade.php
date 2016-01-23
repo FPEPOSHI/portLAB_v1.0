@@ -19,9 +19,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                    <a href="{!! URL::route("admindelete") !!}" class="btn btn-danger">OK</a>
+                    <div onclick="d_p_a_a()" class="btn btn-danger">OK</div>
                 </div>
-                <input type="hidden" value="" id="p-id-d-c"/>
+                <input type="hidden" value="" id="p-id-d-c-a"/>
 
                 <!-- Modal Footer -->
 

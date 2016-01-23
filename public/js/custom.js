@@ -267,3 +267,16 @@ function search(){
     });
 }
 
+function d_p_a_a()
+{
+    var i =  $("#p-id-d-c-a").val();
+    $.ajax({
+        async:true,
+        method: "GET",
+        url: '/home/b?i='+i,
+        success: function(data){
+            window.location.href = "/home"
+        }
+    });
+}
+
