@@ -52,4 +52,14 @@ class User
     {
         return DB::select("select username from Login where username=? and user_id<>?",array($usr,$id));
     }
+
+    public static function getUserFromProject($id)
+    {
+        return DB::select("select u.*, p.title as p_name from Project p inner join User u on u.user_id = p.user_id where p.project_id =? ", array($id));
+    }
+
+    public static function sendRequestToDownload($id1, $id2, $proj)
+    {
+        DB::select("insert into Request(sender_id,reciever_id,project_id,status) VALUES(?,?,?,?)", array($id1,$id2,$proj,0));
+    }
 }

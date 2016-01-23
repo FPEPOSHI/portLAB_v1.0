@@ -140,35 +140,29 @@ function checkU()
 }
 function downPro(a)
 {
-
     $.ajax({
         async : false,
         url: "/home/download?p="+a,
         method: "GET",
         success: function(data){
-            switch (data)
-            {
-                case 1:
-                    $('#request').modal({
-                        backdrop: "static",
-                        show: "false",
-                    }).on('show.bs.modal', function(){
-                        var url = "/home/request?p="+a;
-                        $.get(url, null, function(dataa){
-                            $('#request').find('#request-u-t-d-p').html(dataa);
-                        });
-                    }).modal('show');
-                    break;
-                case 2:
-                    $('#info_pro').modal({
-                        backdrop: "static",
-                        show: "false",
-                    }).on('show.bs.modal', function(){
-                    }).modal('show');
-                    break;
-                default :
+            if(data == 1) {
+                $('#request').modal({
+                    backdrop: "static",
+                    show: "false",
+                }).on('show.bs.modal', function () {
+                    var url = "/home/request?p=" + a;
+                    $.get(url, null, function (dataa) {
+                        $('#request').find('#request-u-t-d-p').html(dataa);
+                    });
+                }).modal('show');
+            }else if (data == 2) {
+                $('#info_pro').modal({
+                    backdrop: "static",
+                    show: "false",
+                }).on('show.bs.modal', function () {
+                }).modal('show');
+            }else{
                     window.location.href = data;
-                    break;
             }
         }
 
@@ -248,6 +242,18 @@ function isFile() {
     return false;
 }
 
+function sendReq(a)
+{
+    $.ajax({
+        async : true,
+        url :"/home/request/send?p="+a,
+        method : "GET",
+        success : function(data){
+            $("#after-request-p").text('Request sent successful.');
+            $("#after-request-p-btn").hide();
+        }
+    });
+}
 
 function search(){
 

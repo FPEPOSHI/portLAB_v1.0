@@ -93,6 +93,17 @@ class HomeController extends Controller
 
     }
 
+    public function sendRequest()
+    {
+        if(isset($_GET['p']))
+        {
+            $pr = $_GET['p'];
+            $id1 = Projects::getUserIdForProject($pr);
+            User::sendRequestToDownload($id1,Utils::getUserID(),$pr);
+            return 1;
+        }
+    }
+
     public function payError()
     {
         Redirect::route('home')->with("success")->send();
@@ -211,32 +222,26 @@ class HomeController extends Controller
 
     public function downloadP()
     {
-        return '/home/download/p?p='.$_GET['p'];
-//        if(isset($_GET['p'])) {
-//            $id = $_GET['p'];
-//            $userId = Utils::getUserID();
-//            $u_id = Projects::getUserIdForProject($id);
-//            if ($userId == $u_id) {
-//                $this->downloadFinally($id);
-//            }
-//            $sh = Projects::hasUserAnyProject($userId);
-//            if (empty($sh)) {
-//                //tregoji qe ska te drejte te shkarkoj
-////            Redirect::to('home')->send();
-//            } else {
-//                $this->downloadFinally($id);
-//            }
-//        }else{
-//             Redirect::to('home')->send();
-//
-//        }
+        $id = $_GET['p'];
+      $this->downloadFinally($id);
+
     }
     public function request()
     {
+        Utils::isLogged();
         if(isset($_GET['p']))
         {
             $id = $_GET['p'];
-            return $id;
+            $user = User::getUserFromProject($id);
+            $t = '<h4>Send a request to <a href="">'.$user[0]->name.'</a> to download project:<u> '.$user[0]->p_name.'</u> </h4>';
+            $t .='<h5>Owner will be noticed for your request.</h5>';
+            $t .='<p id="after-request-p"></p>';
+            $t .='<div class="modal-footer">
+                        <button  onclick="sendReq('.$id.')" id="after-request-p-btn" class="btn btn-primary" >
+                            Send Request
+                        </button>
+                    </div>';
+            return $t;
         }else{
           Redirect::to('home')->send();
 
@@ -244,23 +249,28 @@ class HomeController extends Controller
     }
     public function download()
     {
-        $id = $_GET['p'];
-        $userId = Utils::getUserID();
-        $u_id = Projects::getUserIdForProject($id);
-        if($userId == $u_id){
-            $this->downloadFinally($id);
-        }
-        $premium = Projects::isPremium(Utils::getUserID());
-        if($premium == 1)
-        {
-            $this->downloadFinally($id);
-        }
-        $sh = Projects::hasUserAnyProject($userId);
-        if(empty($sh))
-        {
-            return 2;
-        }else {
-            return 1;
+        //Utils::isLogged();
+        if(isset($_GET['p'])) {
+            $id = $_GET['p'];
+            $userId = Utils::getUserID();
+            $u_id = Projects::getUserIdForProject($id);
+            if ($userId == $u_id) {
+                return '/home/download/p?p='.$_GET['p'];
+//                $this->downloadFinally($id);
+            }
+            $premium = Projects::isPremium(Utils::getUserID());
+            if ($premium == 1) {
+                return '/home/download/p?p='.$_GET['p'];
+//                $this->downloadFinally($id);
+            }
+            $sh = Projects::hasUserAnyProject($userId);
+            if (empty($sh)) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }else{
+            Redirect::to('home')->send();
         }
     }
 
@@ -296,7 +306,7 @@ class HomeController extends Controller
                             <div class="row">
                             <div class="col-sm-6">
                                 <p>' . $pro->downloads . '</p>';
-            $t .= ' <a href="' . URL::route("download", array($pro->project_id)) . '" style="text-decoration:none;color:white"><i id="d-ppp" data-id="' . $pro->project_id . ' ", class="fa fa-download"> Download</i></a>
+            $t .= ' <a href="javascript: downPro('. $pro->project_id.')" style="text-decoration:none;color:white"><i id="d-ppp" data-id="' . $pro->project_id . ' ", class="fa fa-download"> Download</i></a>
                             </div>';
             $t .= '<div class="col-sm-6">
                                 <p id="l-p-i'.$pro->project_id.'">'. $pro->likes .'</p>';
