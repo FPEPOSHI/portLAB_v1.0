@@ -14,15 +14,28 @@ function viewUser(a)
         $("#usr-content-o-u").html(data);
     }
 });
+
+
+
+
+
+
+}
+function d_p(a)
+{
+    $('#admin_del').modal({
+        backdrop: "static",
+        show: "false",
+    }).on('show.bs.modal', function(){
+
+    }).modal('show');
+
     $.ajax({
-        async:true,
-        method: "GET",
-        url: '/home/b?i='+i,
-        success:function(data){
-            $("#delete").html(data);
-        }
-    });
-
-
-
+    async:true,
+    method: "GET",
+    url: '/home/b?i='+i,
+    success:function(data){
+        $("#delete").html(data);
+    }
+});
 }

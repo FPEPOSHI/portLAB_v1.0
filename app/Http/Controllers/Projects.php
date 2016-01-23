@@ -196,7 +196,7 @@ class Projects
 
     public static function getAllProjectsById($id)
     {
-        return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads as p_down, p.likes, l.user_id as l_user, p.project_id
+        return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads as p_down, p.likes as p_like, l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
