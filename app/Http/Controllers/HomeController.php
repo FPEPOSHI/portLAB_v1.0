@@ -209,24 +209,59 @@ class HomeController extends Controller
         }
     }
 
-    public function download($id)
+    public function downloadP()
     {
+        return '/home/download/p?p='.$_GET['p'];
+//        if(isset($_GET['p'])) {
+//            $id = $_GET['p'];
+//            $userId = Utils::getUserID();
+//            $u_id = Projects::getUserIdForProject($id);
+//            if ($userId == $u_id) {
+//                $this->downloadFinally($id);
+//            }
+//            $sh = Projects::hasUserAnyProject($userId);
+//            if (empty($sh)) {
+//                //tregoji qe ska te drejte te shkarkoj
+////            Redirect::to('home')->send();
+//            } else {
+//                $this->downloadFinally($id);
+//            }
+//        }else{
+//             Redirect::to('home')->send();
+//
+//        }
+    }
+    public function request()
+    {
+        if(isset($_GET['p']))
+        {
+            $id = $_GET['p'];
+            return $id;
+        }else{
+          Redirect::to('home')->send();
+
+        }
+    }
+    public function download()
+    {
+        $id = $_GET['p'];
         $userId = Utils::getUserID();
         $u_id = Projects::getUserIdForProject($id);
         if($userId == $u_id){
             $this->downloadFinally($id);
         }
+        $premium = Projects::isPremium(Utils::getUserID());
+        if($premium == 1)
+        {
+            $this->downloadFinally($id);
+        }
         $sh = Projects::hasUserAnyProject($userId);
         if(empty($sh))
         {
-            //tregoji qe ska te drejte te shkarkoj
-//            Redirect::to('home')->send();
+            return 2;
         }else {
-            $this->downloadFinally($id);
+            return 1;
         }
-
-
-//        Redirect::to('home')->send();
     }
 
     public function downloadFinally($id)

@@ -80,7 +80,6 @@ $('body').delegate('#pass_up','click',function(){
         backdrop: "static",
         show: "false",
     }).on('show.bs.modal', function(){
-
     }).modal('show');
 });
 
@@ -141,7 +140,39 @@ function checkU()
 }
 function downPro(a)
 {
-    alert(a);
+
+    $.ajax({
+        async : false,
+        url: "/home/download?p="+a,
+        method: "GET",
+        success: function(data){
+            switch (data)
+            {
+                case 1:
+                    $('#request').modal({
+                        backdrop: "static",
+                        show: "false",
+                    }).on('show.bs.modal', function(){
+                        var url = "/home/request?p="+a;
+                        $.get(url, null, function(dataa){
+                            $('#request').find('#request-u-t-d-p').html(dataa);
+                        });
+                    }).modal('show');
+                    break;
+                case 2:
+                    $('#info_pro').modal({
+                        backdrop: "static",
+                        show: "false",
+                    }).on('show.bs.modal', function(){
+                    }).modal('show');
+                    break;
+                default :
+                    window.location.href = data;
+                    break;
+            }
+        }
+
+    });
 }
 function checkUL()
 {

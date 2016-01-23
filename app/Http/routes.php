@@ -21,14 +21,14 @@ Route::get('/login', array('as'=>'login', 'uses'=>'LoginController@index'));
 Route::get('/contact', array('as'=>'contact', 'uses'=>'LoginController@contact'));
 Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
 Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
-Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
+Route::get('/home/download/p', array('as'=>'download', 'uses'=>'HomeController@download'));
 Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
 Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
 Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
 Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
 Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
 Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
-Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@download"));
+Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@downloadP"));
 Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 //Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
 Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
@@ -42,6 +42,7 @@ Route::get("/home/a", array("as"=>"admin", "uses"=>"AdminController@getUser"));
 Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
 Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
 Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
+Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -57,14 +58,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/contact', array('as'=>'contact', 'uses'=>'LoginController@contact'));
     Route::post('/login', array('as'=>'log_user', 'uses'=>'LoginController@check'));
     Route::get('/home', array('as'=>'home', 'uses'=>'HomeController@index'));
-    Route::get('/home/download/{id}', array('as'=>'download', 'uses'=>'HomeController@download'));
+    Route::get('/home/download/p', array('as'=>'download', 'uses'=>'HomeController@download'));
     Route::get('/home/logout', array('as'=>'logout', 'uses'=>'HomeController@logout'));
     Route::post("/home", array("as"=>"newproject", "uses"=>"HomeController@newproject"));
     Route::get("/home/category/{cat}", array("as"=>"bycategory", "uses"=>"HomeController@byCategory"));
     Route::get("/profile", array("as"=>"profile", "uses"=>"ProfileController@index"));
     Route::get("/profile/{usr}", array("as"=>"usr_profile", "uses"=>"ProfileController@viewUsr"));
     Route::get("/home/project/like/{id}", array("as"=>"like", "uses"=>"HomeController@like"));
-    Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@download"));
+    Route::get("/home/download", array("as"=>"download", "uses"=>"HomeController@downloadP"));
     Route::post("/profile/update/{id}", array("as"=>"edit", "uses"=>"ProfileController@edit"));
 //    Route::get("/profile/edit/{id}", array("as"=>"edit_p", "uses"=>"ProfileController@getProjectById"));
     Route::post("/profile/editp", array("as"=>"edit_pass", "uses"=>"ProfileController@editPass"));
@@ -78,6 +79,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/home/b/{id}", array("as"=>"admindelete", "uses"=>"AdminController@deleteProjectB"));
     Route::get("/home/premium/success", array("as"=>"success", "uses"=>"HomeController@paySuccess"));
     Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@payError"));
+    Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
 
 
 

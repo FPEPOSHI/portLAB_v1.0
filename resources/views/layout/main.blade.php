@@ -52,10 +52,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
     </div><!-- /.content-wrapper -->
 </div>
-
+@include('info_pro')
 @include('edit_pass')
 @include('edit_settings')
 @include('pay')
+@include('request')
+@include('newproject')
         <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.3 -->
