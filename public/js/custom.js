@@ -145,7 +145,7 @@ function downPro(a)
         url: "/home/download?p="+a,
         method: "GET",
         success: function(data){
-            if(data == "1") {
+            if(data == 1) {
                 $('#request').modal({
                     backdrop: "static",
                     show: "false",
@@ -155,7 +155,7 @@ function downPro(a)
                         $('#request').find('#request-u-t-d-p').html(dataa);
                     });
                 }).modal('show');
-            }else if (data == "2") {
+            }else if (data == 2) {
                 $('#info_pro').modal({
                     backdrop: "static",
                     show: "false",
@@ -242,6 +242,18 @@ function isFile() {
     return false;
 }
 
+function sendReq(a)
+{
+    $.ajax({
+        async : true,
+        url :"/home/request/send?p="+a,
+        method : "GET",
+        success : function(data){
+            $("#after-request-p").text('Request sent successful.');
+            $("#after-request-p-btn").hide();
+        }
+    });
+}
 
 function search(){
 

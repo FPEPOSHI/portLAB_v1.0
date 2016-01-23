@@ -17,11 +17,7 @@
                 <div id="request-u-t-d-p">
 
                 </div>
-                    <div class="modal-footer">
-                        <button type="submit" id="send" class="btn btn-primary" >
-                            Send Request
-                        </button>
-                    </div>
+
                 </form>
               </div>
             </div>
