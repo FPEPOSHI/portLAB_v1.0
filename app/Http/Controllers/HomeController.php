@@ -255,15 +255,26 @@ class HomeController extends Controller
         if(isset($_GET['p']))
         {
             $id = $_GET['p'];
+            $is = User::isRequestedOnce($id,Utils::getUserID());
             $user = User::getUserFromProject($id);
-            $t = '<h4>Send a request to <a href="">'.$user[0]->name.'</a> to download project:<u> '.$user[0]->p_name.'</u> </h4>';
+            $t = '';
+            if(empty($is)) {
+            $t .= '<h4>Send a request to <a href="">'.$user[0]->name.'</a> to download project:<u> '.$user[0]->p_name.'</u> </h4>';
             $t .='<h5>Owner will be noticed for your request.</h5>';
             $t .='<p id="after-request-p"></p>';
-            $t .='<div class="modal-footer">
-                        <button  onclick="sendReq('.$id.')" id="after-request-p-btn" class="btn btn-primary" >
+                $t .= '<div class="modal-footer">
+                        <button  onclick="sendReq(' . $id . ')" id="after-request-p-btn" class="btn btn-primary" >
                             Send Request
                         </button>
                     </div>';
+            }else{
+                $t .='<h5>You have requested once.</h5>';
+                $t .= '<div class="modal-footer">
+                        <button id="after-request-p-btn" data-dismiss="modal" class="btn" >
+                            Sit down and wait.
+                        </button>
+                    </div>';
+            }
             return $t;
         }else{
           Redirect::to('home')->send();

@@ -283,6 +283,7 @@ function d_confirmed_p(p)
             action: function(dialog) {
                 window.location.href = '/home/download/finally?p='+p+"&i=1";
                 dialog.close();
+                $("#c-not-d-d-f-"+p).remove();
             }
         }]
     });
@@ -315,6 +316,8 @@ function confirm_request(p)
                     url: '/home/request/confirm?i='+p+"&j=1",
                     success: function(data){
                         dialog.close();
+                        $("#c-not-d-d-"+p).remove();
+
                     }
                 });
             }

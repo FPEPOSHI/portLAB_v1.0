@@ -99,4 +99,10 @@ class User
     {
         return DB::select('select * from Request where project_id=? and sender_id=? and status<>0',array($id,$getUserID));
     }
+
+    public static function isRequestedOnce($id, $getUserID)
+    {
+        return DB::select('select * from Request where project_id=? and sender_id=? and status=0',array($id,$getUserID));
+
+    }
 }

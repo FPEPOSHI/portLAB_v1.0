@@ -69,14 +69,14 @@
                             <ul class="menu">
                                 @foreach($notification as $n)
                                     @if($n->status == 0)
-                                        <li onclick="confirm_request({!! $n->id !!})">
+                                        <li id="c-not-d-d-{!! $n->id !!}" onclick="confirm_request({!! $n->id !!})">
                                                <div id="notif-row" class="external-event bg-red">{!! $n->s_name !!} has request
                                                         you to  download this project {!! $n->p_name !!}
                                                 </div>
                                         </li>
                                     @else
                                         @if($n->r_id != $user_id)
-                                            <li onclick="d_confirmed_p({!! $n->p_id !!})"><!-- start notification -->
+                                            <li id="c-not-d-d-f-{!! $n->p_id !!}" onclick="d_confirmed_p({!! $n->p_id !!})"><!-- start notification -->
                                                 <div id="notif-row" class="external-event bg-green">
                                                     {!! $n->r_name !!} has confirm </br> you to
                                                     download this project {!! $n->p_name !!}
