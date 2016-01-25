@@ -46,6 +46,7 @@ Route::get("/home/premium/error", array("as"=>"error", "uses"=>"HomeController@p
 Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
 Route::get("/home/request/send", array("as"=>"send_r", "uses"=>"HomeController@sendRequest"));
 Route::get("/home/request/confirm", array("as"=>"confirm_r", "uses"=>"HomeController@confirmRequest"));
+Route::get("/home/projects/v", array("as"=>"viewmore", "uses"=>"HomeController@viewmore"));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -86,7 +87,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("/home/request", array("as"=>"request", "uses"=>"HomeController@request"));
     Route::get("/home/request/send", array("as"=>"send_r", "uses"=>"HomeController@sendRequest"));
     Route::get("/home/request/confirm", array("as"=>"confirm_r", "uses"=>"HomeController@confirmRequest"));
-
+    Route::get("/home/projects/v", array("as"=>"viewmore", "uses"=>"HomeController@viewmore"));
 
 
 

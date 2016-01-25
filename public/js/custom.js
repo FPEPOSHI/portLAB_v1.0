@@ -219,7 +219,16 @@ function e_p(a)
 
 function viewMore()
 {
-    alert("view more");
+    var a = $('#view-more-pro-id input:last').val();
+    $.ajax({
+        url: "/home/projects/v?i="+a,
+        method: 'GET',
+        success: function(data)
+        {
+            //alert(data);
+            $("#view-more-pro-id").append(data);
+        }
+    });
 }
 
 function getExtension(filename) {

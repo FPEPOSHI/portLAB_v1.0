@@ -1,7 +1,8 @@
 <div id="a-p-s-d">
-        <ul class="users-list clearfix" >
+        <ul class="users-list clearfix" id="view-more-pro-id">
             @foreach($projects as $pro)
-                <div class="col-lg-4 col-xs-6" >
+                <input type="hidden" value="{!! $pro->project_id !!}">
+                <div class="col-lg-4 col-xs-6" data-id="{!! $pro->project_id !!}" >
                     <!-- small box -->
                     <div class="small-box custom-bg-projects" data-id="{!! $pro->project_id !!}">
                         <div class="inner">
