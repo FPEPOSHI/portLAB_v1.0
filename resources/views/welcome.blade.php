@@ -35,8 +35,6 @@
         <nav id="nav">
             <ul>
                 <li><a href="/">Kryefaqja</a></li>
-
-
                 <li><a href="#about">Rreth nesh</a></li>
                 <li><a href="#contact">Kontakto</a></li>
                 <li><a href="{!! URL::route("login") !!}">Hyr</a></li>
