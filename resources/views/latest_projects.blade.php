@@ -13,7 +13,7 @@
             @foreach($latest_pro as $pro)
                 <li class="item">
                     <div class="product-img">
-                        <img src="{!! asset('uploads/no_img.jpg') !!}" alt="Product Image">
+                        <img src="{!! asset('uploads/'.$pro->image) !!}" alt="Product Image">
                     </div>
                     <div class="product-info">
                         <a href="javascript:;" class="product-title">{!! $pro->p_name !!}</a>

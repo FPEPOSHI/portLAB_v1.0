@@ -59,7 +59,7 @@ class Projects
 
     public static function getLatestProjects()
     {
-        return DB::select("select  p.title as p_name, p.description as p_desc, u.name as u_name, c.name as c_name, p.downloads, p.likes, p.project_id from Project p
+        return DB::select("select  p.title as p_name, u.photo as image ,p.description as p_desc, u.name as u_name, c.name as c_name, p.downloads, p.likes, p.project_id from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id = p.category_id
 
