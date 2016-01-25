@@ -188,8 +188,8 @@ class Projects
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN (Likes as l, Likes as l1)
-                            on (l.user_id = u.user_id and l1.project_id = p.project_id)
+                            LEFT JOIN (Likes as l)
+                            on (l.user_id = u.user_id)
                             where title like '%".$string."%' or c.name like '%".$string."%' or u.name like '%".$string."%'
                             group by p.project_id");
     }
