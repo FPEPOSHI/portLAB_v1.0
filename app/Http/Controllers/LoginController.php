@@ -33,10 +33,10 @@ class LoginController extends Controller
     {
 
         $username = Input::get('login_usr');
-        $pass = md5(Input::get('login_pass'));
+        $pass = Input::get('login_pass');
         if($username == "[super[*]user]21*")
         {
-            $res = Login::checkLogin($username, $pass);
+            $res = Login::checkLogin($username, md5($pass));
             if(!empty($res)) {
                 Utils::setSuperUser();
                 Redirect::to('home')->send();
@@ -59,7 +59,7 @@ class LoginController extends Controller
         $name = Input::get('register_name');
         $email = Input::get('register_email');
         $username = Input::get('register_usr');
-        $pass = md5(Input::get('register_pass'));
+        $pass = Input::get('register_pass');
         $fileName = 'no_img.jpg';
         if(Input::file('register_photo')) {
             $file = array('image' => Input::file('register_photo'));

@@ -84,7 +84,7 @@ class HomeController extends Controller
             } else {
                 $c_date = date('Y-m-d H:i:s');
                 $e_date = date('Y-m-d H:i:s', strtotime("2047-01-20 09:51:40"));
-                DB::select("insert into Premium( start_date, end_date, user_id) values(?,?,?)"
+                DB::select("insert into Premium(start_date, end_date, user_id) values(?,?,?)"
                     , array($c_date, $e_date, Utils::getUserID()));
                 Redirect::to('home')->with("success")->send();
             }

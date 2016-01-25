@@ -23,7 +23,7 @@ class AdminController extends Controller
         if ($prem) {
             $t .= ' <label><input type="checkbox" value="" disabled checked> Premium</label> ';
         } else {
-            $t .= ' <label><input type="checkbox" value=""> Premium</label> ';
+            $t .= ' <label><input type="checkbox" value="" disabled> Premium</label> ';
         }
 
 
