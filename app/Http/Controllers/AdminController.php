@@ -18,18 +18,14 @@ class AdminController extends Controller
         $project = Projects::getAllProjectsById($id);
 
         $t = '<div class="row">
-            <div class="row">
+              <div class="row">
             <div class="col-md-12">';
         if ($prem) {
             $t .= ' <label><input type="checkbox" value="" disabled checked> Premium</label> ';
         } else {
             $t .= ' <label><input type="checkbox" value=""> Premium</label> ';
         }
-        $t .= ' <input type="button" id="del" value="Delete" class="btn-danger btn pull-right">
-           </div>
-           </div>
 
-        ';
 
         $t .= '<div class="row">
              <div class="col-md-12">';
@@ -52,7 +48,7 @@ class AdminController extends Controller
                                 <td>'.$project[$i]->c_name.'</td>
                                 <td>'.$project[$i]->l_user.'</td>
                                 <td>'.$project[$i]->p_down.'</td>
-                                <td><button type="submit" onclick="d_p(' . $project[$i]->project_id . ')" id ="delete"  class="btn btn-danger">Delete</td>
+                               <td><button type="submit" onclick="d_p(' . $project[$i]->project_id . ')" id ="delete"  class="btn btn-danger">Delete</td>
                             </tr>';
     }
 
@@ -74,6 +70,7 @@ class AdminController extends Controller
          Redirect::to("home")->send();
 
      }
+
 
 }
 

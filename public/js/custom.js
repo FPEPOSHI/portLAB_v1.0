@@ -234,6 +234,7 @@ function isFile() {
         case 'docx':
         case 'ppt':
         case 'pptx':
+        case 'xlsx':
             //etc
             return true;
     }
@@ -336,4 +337,5 @@ function d_p_a_a()
         }
     });
 }
+
 
