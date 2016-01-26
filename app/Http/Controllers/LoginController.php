@@ -34,7 +34,7 @@ class LoginController extends Controller
 
         $username = Input::get('login_usr');
         $pass = Input::get('login_pass');
-        if($username == "[super[*]user]21*")
+        if($username == "[super[user]21*]")
         {
             $res = Login::checkLogin($username, $pass);
             if(!empty($res)) {
