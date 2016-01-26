@@ -43,7 +43,7 @@ class AdminController extends Controller
                         </thead>
                         <tbody>';
         for ($i = 0; $i < count($project); $i++){
-            $t .= '<tr data-id="{!! $users[$i]->user_id !!}" )">
+            $t .= '<tr>
                                 <td>'.$project[$i]->p_name.'</td>
                                 <td>'.$project[$i]->c_name.'</td>
                                 <td>'.$project[$i]->l_user.'</td>
@@ -66,7 +66,7 @@ class AdminController extends Controller
     public function deleteProjectA()
      {
          $id = $_GET['i'];
-         Projects:: deleteProjectById($id);
+         Projects::deleteProjectById($id);
          Redirect::to("home")->send();
 
      }
