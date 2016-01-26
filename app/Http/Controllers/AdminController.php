@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         $id = $_GET['i'];
         $prem = Projects::isPremium($id);
-        $project = Projects::getAllProjectsById($id);
+        $project = Projects::getAllProjectsById($id, Utils::getUserID());
 
         $t = '<div class="row">
               <div class="row">

@@ -71,7 +71,7 @@ class HomeController extends Controller
     public function viewmore()
     {
         $lastid = $_GET['i'];
-        $viewmore = Projects::viewMore($lastid);
+        $viewmore = Projects::viewMore($lastid,Utils::getUserID());
         $t = '';
         foreach ($viewmore as $pro) {
             $t .= '
@@ -119,7 +119,7 @@ class HomeController extends Controller
     {
         Utils::isLogged();
         $cat_id = Projects::getCategoryID($cat);
-        $projects = Projects::getAllProjectsByCategory($cat_id);
+        $projects = Projects::getAllProjectsByCategory($cat_id,Utils::getUserID());
         return $this->returnView($projects,2, $cat);
     }
 
@@ -372,7 +372,7 @@ class HomeController extends Controller
     public function searchProject()
     {
         $s = $_GET["s"];
-        $search = Projects::search($s);
+        $search = Projects::search($s,Utils::getUserID());
 
         $t = ' <ul class="users-list clearfix">';
         foreach ($search as $pro) {
