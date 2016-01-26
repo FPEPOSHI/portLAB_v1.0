@@ -39,8 +39,8 @@ class DatabaseSeeder extends Seeder
             'name' => "Physics",
         ]);
         DB::table('login')->insert([
-            'username' => "[super[*]user]21*",
-            'password' => "5fc024e9921765fa1cfb5eb2f042e865",//#bufe99*{}.
+            'username' => "[super[user]21*]",
+            'password' => "4baba96e17fd7a4e6eefc2646b8613b3",//#bufe99*{}.
             'role' => 1,
         ]);
 

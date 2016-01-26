@@ -105,4 +105,25 @@ class LoginController extends Controller
             echo "Message could not be sent...";
         }
     }
+    public function contact()
+    {
+
+        $emri=Input::get("InputName");
+        $email=Input::get("InputEmail");
+        $sms=Input::get("InputMessage");
+        $to = "info@portlab.xyz";
+        $subject = "Welcome to portLAB ";
+
+        $message = "<b>Keni nje email. ".$emri."</b>";
+        $message .= "<h1>'.$sms.'</h1>";
+
+
+        $header = "From:".$email."\r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+        $retval = mail ($to,$subject,$message,$header);
+        Redirect::to('login')->send();
+
+    }
+
 }

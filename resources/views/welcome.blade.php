@@ -118,9 +118,6 @@
             Aplikacioni do te kete nje faqe prezantuese e cila do ti informoje rreth platformes dhe per perdoruesit e interesuar do te ridrejtohen tek nje faqe ku ato do te duhet te logohen per te kaluar ne brendesi te aplikacionit. Me pas do te kete nje nderfaqe profil per cdo perdorues, ku secili mund te ngarkoje projektet e tyre, ti menaxhon ato si edhe profilin e tyre. Do te kete dhe nje nderfaqe ku do te prezantohen projektet me te fundit dhe nje nderfaqe tjeter ku mund te kerkojne per projekte me ane te filtrimit.
 
         </div>
-        <div class="col-md-1">
-            {{--<img src="{!! asset("welcome/img6.jpg") !!}" alt="" />--}}
-        </div>
     </div>
 </div>
 
