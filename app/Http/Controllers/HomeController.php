@@ -83,7 +83,7 @@ class HomeController extends Controller
                         <div class="inner">
                             <h4>' . $pro->p_name . '</h4>
                             <p data-id="'.str_replace(" ","-",$pro->c_name).'" id="v_c_project">' . $pro->c_name . '</p>
-                            <p data-id=" '. str_replace(" ","-",$pro->u_name) .'" id="u_p_project">' . $pro->u_name . '</p>
+                            <p data-id="'. str_replace(" ","-",$pro->u_name) .'" id="u_p_project">' . $pro->u_name . '</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-files-o"></i>
@@ -382,7 +382,7 @@ class HomeController extends Controller
                         <div class="inner">
                             <h4>' . $pro->p_name . '</h4>
                             <p data-id="'.str_replace(" ","-",$pro->c_name).'" id="v_c_project">' . $pro->c_name . '</p>
-                            <p data-id=" '. str_replace(" ","-",$pro->u_name) .'" id="u_p_project">' . $pro->u_name . '</p>
+                            <p data-id="'.str_replace(" ","-",$pro->u_name) .'" id="u_p_project">' . $pro->u_name . '</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-files-o"></i>

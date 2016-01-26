@@ -1,10 +1,6 @@
 <div class="container">
     <div class="row">
-        {{--<div class="col-md-12">--}}
-            {{--<small><i></i>Add alerts if form ok... success, else error.</i></small>--}}
-            {{--<div class="alert alert-success"><strong><span class="glyphicon glyphicon-send"></span> Success! Message sent. (If form ok!)</strong></div>--}}
-            {{--<div class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span><strong> Error! Please check the inputs. (If form error!)</strong></div>--}}
-        {{--</div>--}}
+
         <div class="col-md-1">
         </div>
             {!! Form::open(array("role" => 'form', 'route'=>'contact','method'=>'get')) !!}

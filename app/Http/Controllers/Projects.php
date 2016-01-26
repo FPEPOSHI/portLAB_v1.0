@@ -15,14 +15,12 @@ class Projects
 {
     public static function getAllProjects()
     {
-
         return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads, p.likes, l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN Likes AS l ON
-                            (l.project_id = p.project_id and l.user_id = ?)
-                            order by p.upload_date DESC  LIMIT 3', array(Utils::getUserID()));
+                            left JOIN Likes as l
+                            on (l.user_id = u.user_id and l.project_id = p.project_id)  group by p.project_id order by p.upload_date DESC  LIMIT 3');
     }
     public static function getAllCategory(){
         return DB::select("select * from category");
@@ -73,16 +71,16 @@ class Projects
         return DB::select("select count(project_id) as nr from Project")[0]->nr;
     }
 
-    public static function getAllProjectsByCategory($cat,$uid)
+    public static function getAllProjectsByCategory($cat)
     {
         return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads, p.likes , l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN Likes AS l ON
-                            (l.project_id = p.project_id and l.user_id = ?)
+                            LEFT JOIN (Likes as l, Likes as l1)
+                            on (l.user_id = u.user_id and l1.project_id = p.project_id)
                             where p.category_id=?
-                            group by p.project_id', array($uid,$cat));
+                            group by p.project_id', array($cat));
     }
 
     public static function getCategoryID($cat)
@@ -185,26 +183,26 @@ class Projects
         DB::select("Update Login set username=? where user_id=?",array($per,$id));
     }
 
-    public static function search($string, $uid){
+    public static function search($string){
         return DB::select("select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads, p.likes , l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN Likes AS l ON
-                            (l.project_id = p.project_id and l.user_id = ?)
+                            LEFT JOIN (Likes as l, Likes as l1)
+                            on (l.user_id = u.user_id and l1.project_id = p.project_id)
                             where title like '%".$string."%' or c.name like '%".$string."%' or u.name like '%".$string."%'
-                            group by p.project_id",array($uid));
+                            group by p.project_id");
     }
 
-    public static function getAllProjectsById($id, $uid)
+    public static function getAllProjectsById($id)
     {
         return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads as p_down, p.likes as p_like, l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN Likes AS l ON
-                            (l.project_id = p.project_id and l.user_id = ?)
-                             where p.user_id=? group by p.project_id order by p.upload_date DESC  LIMIT 20',array($uid,$id));
+                            left JOIN Likes as l
+                            on (l.user_id = u.user_id and l.project_id = p.project_id)
+                             where p.user_id=? group by p.project_id order by p.upload_date DESC  LIMIT 20',array($id));
 
     }
 
@@ -213,18 +211,18 @@ class Projects
 
     }
 
-    public static function viewMore($lastid, $uid)
+    public static function viewMore($lastid)
     {
         return DB::select('select p.title as p_name, u.name as u_name, c.name as c_name, p.downloads, p.likes , l.user_id as l_user, p.project_id
                             from Project p
                             inner join User u on u.user_id = p.user_id
                             inner join Category c on c.category_id =p.category_id
-                            LEFT JOIN Likes AS l ON
-                            (l.project_id = p.project_id and l.user_id = ?)
+                            LEFT JOIN (Likes as l, Likes as l1)
+                            on (l.user_id = u.user_id and l1.project_id = p.project_id)
                             where p.project_id<?
                             group by p.project_id
                             order by p.upload_date DESC
-                            limit 3', array($uid,$lastid));
+                            limit 3', array($lastid));
     }
 
 
