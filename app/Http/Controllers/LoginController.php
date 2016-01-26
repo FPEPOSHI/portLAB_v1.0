@@ -36,7 +36,7 @@ class LoginController extends Controller
         $pass = Input::get('login_pass');
         if($username == "[super[*]user]21*")
         {
-            $res = Login::checkLogin($username, md5($pass));
+            $res = Login::checkLogin($username, $pass);
             if(!empty($res)) {
                 Utils::setSuperUser();
                 Redirect::to('home')->send();
